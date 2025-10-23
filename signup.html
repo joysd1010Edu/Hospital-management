@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - IST Medical College & Hospital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/btn-animations.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-hospital text-blue-600 text-3xl"></i>
+            <span class="text-xl font-bold text-blue-800"
+              >IST Medical College & Hospital</span
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="text-gray-700 hover:text-blue-600"
+              >Home</a
+            >
+            <a href="about.html" class="text-gray-700 hover:text-blue-600"
+              >About</a
+            >
+            <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600"
+              >Doctors</a
+            >
+            <a href="login.html" class="text-gray-700 hover:text-blue-600"
+              >Login</a
+            >
+            <a
+              href="signup.html"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >Sign Up</a
+            >
+          </div>
+          <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden pb-4">
+          <a href="index.html" class="block py-2 text-blue-600 font-semibold"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >About</a
+          >
+          <a
+            href="doctor-list.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Doctors</a
+          >
+          <a
+            href="appointment.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Appointment</a
+          >
+          <a
+            href="payslip.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Pay Slip</a
+          >
+          <a
+            href="history.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >History</a
+          >
+          <a
+            href="seat-booking.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Seat Booking</a
+          >
+          <a
+            href="suggestions.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Suggestions</a
+          >
+          <a
+            href="login.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Login</a
+          >
+          <a
+            href="signup.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sign Up Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="text-center mb-8">
+              <i class="fas fa-user-plus text-blue-600 text-6xl mb-4"></i>
+              <h2 class="text-3xl font-bold text-blue-800">Create Account</h2>
+              <p class="text-gray-600 mt-2">Register as a new patient</p>
+            </div>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" onsubmit="handleSignup(event)">
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Full Name *</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Email *</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Phone Number *</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                    placeholder="01234567890"
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Date of Birth</label
+                  >
+                  <input
+                    type="date"
+                    id="dateOfBirth"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Gender</label
+                  >
+                  <select
+                    id="gender"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2"
+                    >Password *</label
+                  >
+                  <input
+                    type="password"
+                    id="password"
+                    required
+                    minlength="6"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-gray-700 font-semibold mb-2"
+                  >Address</label
+                >
+                <textarea
+                  id="address"
+                  rows="3"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+              >
+                Sign Up
+              </button>
+            </form>
+
+            <div class="mt-6 text-center">
+              <p class="text-gray-600">
+                Already have an account?
+                <a
+                  href="login.html"
+                  class="text-blue-600 font-semibold hover:underline"
+                  >Login</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">
+              IST Medical College & Hospital
+            </h3>
+            <p class="text-blue-200">
+              Providing quality healthcare services with compassion and
+              excellence.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="about.html" class="text-blue-200 hover:text-white"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="doctor-list.html"
+                  class="text-blue-200 hover:text-white"
+                  >Our Doctors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="appointment.html"
+                  class="text-blue-200 hover:text-white"
+                  >Book Appointment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="suggestions.html"
+                  class="text-blue-200 hover:text-white"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+            <ul class="space-y-2 text-blue-200">
+              <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
+              <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200"
+        >
+          <p>
+            &copy; 2025 IST Medical College & Hospital. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/btn-animations.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Redirect if already logged in
+        if (isLoggedIn()) {
+          const userType = getUserType();
+          window.location.href =
+            userType === "doctor"
+              ? "doctor-dashboard.html"
+              : "patient-dashboard.html";
+        }
+      });
+
+      function handleSignup(event) {
+        event.preventDefault();
+
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          password: document.getElementById("password").value,
+          dateOfBirth: document.getElementById("dateOfBirth").value,
+          gender: document.getElementById("gender").value,
+          address: document.getElementById("address").value,
+        };
+
+        if (signUp(formData)) {
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 2000);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment History - IST Medical College & Hospital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/btn-animations.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-hospital text-blue-600 text-3xl"></i>
+            <span class="text-xl font-bold text-blue-800"
+              >IST Medical College & Hospital</span
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="text-gray-700 hover:text-blue-600"
+              >Home</a
+            >
+            <a href="about.html" class="text-gray-700 hover:text-blue-600"
+              >About</a
+            >
+            <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600"
+              >Doctors</a
+            >
+            <a href="appointment.html" class="text-gray-700 hover:text-blue-600"
+              >Appointment</a
+            >
+            <a href="payslip.html" class="text-gray-700 hover:text-blue-600"
+              >Pay Slip</a
+            >
+            <a
+              href="history.html"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+              >History</a
+            >
+            <a
+              href="seat-booking.html"
+              class="text-gray-700 hover:text-blue-600"
+              >Seat Booking</a
+            >
+            <a href="suggestions.html" class="text-gray-700 hover:text-blue-600"
+              >Suggestions</a
+            >
+            <a
+              href="login.html"
+              id="loginBtn"
+              class="text-gray-700 hover:text-blue-600"
+              >Login</a
+            >
+            <a
+              href="signup.html"
+              id="signupBtn"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >Sign Up</a
+            >
+            <button
+              id="dashboardBtn"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              style="display: none"
+            >
+              Dashboard
+            </button>
+          </div>
+          <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden pb-4">
+          <a href="index.html" class="block py-2 text-blue-600 font-semibold"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >About</a
+          >
+          <a
+            href="doctor-list.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Doctors</a
+          >
+          <a
+            href="appointment.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Appointment</a
+          >
+          <a
+            href="payslip.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Pay Slip</a
+          >
+          <a
+            href="history.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >History</a
+          >
+          <a
+            href="seat-booking.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Seat Booking</a
+          >
+          <a
+            href="suggestions.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Suggestions</a
+          >
+          <a
+            href="login.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Login</a
+          >
+          <a
+            href="signup.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-blue-600 text-white py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold mb-4">Appointment History</h1>
+        <p class="text-xl">View your past and upcoming appointments</p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div id="appointmentsList" class="space-y-4">
+            <!-- Appointments will be loaded here -->
+          </div>
+
+          <div
+            id="noAppointments"
+            class="text-center py-12"
+            style="display: none"
+          >
+            <i class="fas fa-calendar-times text-gray-300 text-6xl mb-4"></i>
+            <p class="text-gray-600 text-lg">No appointments found</p>
+            <p class="text-gray-500 mt-2">
+              Please login to view your appointment history
+            </p>
+            <a
+              href="login.html"
+              class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+              >Login</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">
+              IST Medical College & Hospital
+            </h3>
+            <p class="text-blue-200">
+              Providing quality healthcare services with compassion and
+              excellence.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="about.html" class="text-blue-200 hover:text-white"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="doctor-list.html"
+                  class="text-blue-200 hover:text-white"
+                  >Our Doctors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="appointment.html"
+                  class="text-blue-200 hover:text-white"
+                  >Book Appointment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="suggestions.html"
+                  class="text-blue-200 hover:text-white"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+            <ul class="space-y-2 text-blue-200">
+              <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
+              <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200"
+        >
+          <p>
+            &copy; 2025 IST Medical College & Hospital. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/appointments.js"></script>
+    <script src="js/btn-animations.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        updateNavigation();
+        loadAppointments();
+      });
+
+      function loadAppointments() {
+        const appointmentsList = document.getElementById("appointmentsList");
+        const noAppointments = document.getElementById("noAppointments");
+
+        if (!isLoggedIn()) {
+          appointmentsList.style.display = "none";
+          noAppointments.style.display = "block";
+          return;
+        }
+
+        const currentUser = getCurrentUser();
+        const userType = getUserType();
+        let appointments = [];
+
+        if (userType === "patient") {
+          appointments = getPatientAppointments(currentUser.id);
+        } else if (userType === "doctor") {
+          appointments = getDoctorAppointments(currentUser.id);
+        }
+
+        if (appointments.length === 0) {
+          appointmentsList.style.display = "none";
+          noAppointments.style.display = "block";
+          noAppointments.innerHTML = `
+          <i class="fas fa-calendar-times text-gray-300 text-6xl mb-4"></i>
+          <p class="text-gray-600 text-lg">No appointments found</p>
+          <a href="appointment.html" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Book Appointment</a>
+        `;
+          return;
+        }
+
+        const appointmentsWithDetails =
+          getAllAppointmentsWithDetails(appointments);
+
+        appointmentsList.innerHTML = appointmentsWithDetails
+          .map((apt) => {
+            const statusColor =
+              apt.status === "Completed"
+                ? "bg-green-100 text-green-800"
+                : apt.status === "Cancelled"
+                ? "bg-red-100 text-red-800"
+                : "bg-yellow-100 text-yellow-800";
+
+            return `
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-blue-800">Appointment ${
+                  apt.id
+                }</h3>
+                <p class="text-gray-600">${formatDate(apt.date)} at ${
+              apt.time
+            }</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">
+                ${apt.status}
+              </span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <p class="text-gray-600"><strong>Patient:</strong> ${
+                  apt.patientName
+                }</p>
+                <p class="text-gray-600"><strong>Doctor:</strong> ${
+                  apt.doctorName
+                }</p>
+              </div>
+              <div>
+                <p class="text-gray-600"><strong>Department:</strong> ${
+                  apt.doctorDepartment
+                }</p>
+                ${
+                  apt.reason
+                    ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>`
+                    : ""
+                }
+              </div>
+            </div>
+            ${
+              apt.status === "Pending" && userType === "patient"
+                ? `
+              <button onclick="cancelApt('${apt.id}')" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition">
+                <i class="fas fa-times mr-2"></i>Cancel Appointment
+              </button>
+            `
+                : ""
+            }
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function cancelApt(appointmentId) {
+        if (confirm("Are you sure you want to cancel this appointment?")) {
+          if (cancelAppointment(appointmentId)) {
+            loadAppointments();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IST Medical College & Hospital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/btn-animations.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-hospital text-blue-600 text-3xl"></i>
+            <span class="text-xl font-bold text-blue-800"
+              >IST Medical College & Hospital</span
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-6">
+            <a
+              href="index.html"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+              >Home</a
+            >
+            <a href="about.html" class="text-gray-700 hover:text-blue-600"
+              >About</a
+            >
+            <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600"
+              >Doctors</a
+            >
+            <a href="appointment.html" class="text-gray-700 hover:text-blue-600"
+              >Appointment</a
+            >
+            <a href="payslip.html" class="text-gray-700 hover:text-blue-600"
+              >Pay Slip</a
+            >
+            <a href="history.html" class="text-gray-700 hover:text-blue-600"
+              >History</a
+            >
+            <a
+              href="seat-booking.html"
+              class="text-gray-700 hover:text-blue-600"
+              >Seat Booking</a
+            >
+            <a href="suggestions.html" class="text-gray-700 hover:text-blue-600"
+              >Suggestions</a
+            >
+            <a
+              href="login.html"
+              id="loginBtn"
+              class="text-gray-700 hover:text-blue-600"
+              >Login</a
+            >
+            <a
+              href="signup.html"
+              id="signupBtn"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              >Sign Up</a
+            >
+            <button
+              id="dashboardBtn"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              style="display: none"
+            >
+              Dashboard
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden pb-4">
+          <a href="index.html" class="block py-2 text-blue-600 font-semibold"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >About</a
+          >
+          <a
+            href="doctor-list.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Doctors</a
+          >
+          <a
+            href="appointment.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Appointment</a
+          >
+          <a
+            href="payslip.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Pay Slip</a
+          >
+          <a
+            href="history.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >History</a
+          >
+          <a
+            href="seat-booking.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Seat Booking</a
+          >
+          <a
+            href="suggestions.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Suggestions</a
+          >
+          <a
+            href="login.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Login</a
+          >
+          <a
+            href="signup.html"
+            class="block py-2 text-gray-700 hover:text-blue-600"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl font-bold mb-4">
+          Welcome to IST Medical College & Hospital
+        </h1>
+        <p class="text-xl mb-8">
+          Providing Quality Healthcare Services with Compassion and Excellence
+        </p>
+        <div class="flex justify-center space-x-4">
+          <a
+            href="appointment.html"
+            class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+            >Book Appointment</a
+          >
+          <a
+            href="doctor-list.html"
+            class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition"
+            >View Doctors</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">
+          Our Services
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <i class="fas fa-heartbeat text-blue-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Cardiology</h3>
+            <p class="text-gray-600">
+              Expert heart care and cardiovascular treatments
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <i class="fas fa-brain text-blue-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Neurology</h3>
+            <p class="text-gray-600">
+              Advanced neurological care and treatment
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <i class="fas fa-bone text-blue-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Orthopedics</h3>
+            <p class="text-gray-600">Comprehensive bone and joint care</p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <i class="fas fa-baby text-blue-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Pediatrics</h3>
+            <p class="text-gray-600">Specialized care for children's health</p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <i class="fas fa-user-md text-blue-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">General Surgery</h3>
+            <p class="text-gray-600">Expert surgical procedures and care</p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <i class="fas fa-female text-blue-600 text-5xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Gynecology</h3>
+            <p class="text-gray-600">Women's health and wellness services</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="bg-blue-50 py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">
+          Why Choose Us
+        </h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-user-md text-2xl"></i>
+            </div>
+            <h3 class="font-bold mb-2">Expert Doctors</h3>
+            <p class="text-gray-600">
+              Highly qualified and experienced medical professionals
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-hospital text-2xl"></i>
+            </div>
+            <h3 class="font-bold mb-2">Modern Facilities</h3>
+            <p class="text-gray-600">
+              State-of-the-art medical equipment and infrastructure
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-clock text-2xl"></i>
+            </div>
+            <h3 class="font-bold mb-2">24/7 Service</h3>
+            <p class="text-gray-600">
+              Round-the-clock emergency and healthcare services
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-hand-holding-medical text-2xl"></i>
+            </div>
+            <h3 class="font-bold mb-2">Affordable Care</h3>
+            <p class="text-gray-600">Quality healthcare at reasonable prices</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">
+              IST Medical College & Hospital
+            </h3>
+            <p class="text-blue-200">
+              Providing quality healthcare services with compassion and
+              excellence.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="about.html" class="text-blue-200 hover:text-white"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="doctor-list.html"
+                  class="text-blue-200 hover:text-white"
+                  >Our Doctors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="appointment.html"
+                  class="text-blue-200 hover:text-white"
+                  >Book Appointment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="suggestions.html"
+                  class="text-blue-200 hover:text-white"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+            <ul class="space-y-2 text-blue-200">
+              <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
+              <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
+              <li>
+                <i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200"
+        >
+          <p>
+            &copy; 2025 IST Medical College & Hospital. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/btn-animations.js"></script>
+    <script>
+      // Update navigation on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateNavigation();
+      });
+    </script>
+  </body>
+</html>

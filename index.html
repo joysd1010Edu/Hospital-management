@@ -6,6 +6,7 @@
   <title>IST Medical College & Hospital</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="bg-gray-50">
   <!-- Navigation -->
@@ -40,7 +41,7 @@
       </div>
       
       <!-- Mobile Menu -->
-      <div id="mobileMenu" class="hidden md:hidden pb-4">
+  <div id="mobileMenu" class="mobile-menu hidden md:hidden pb-4">
         <a href="index.html" class="block py-2 text-blue-600 font-semibold">Home</a>
         <a href="about.html" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
         <a href="doctor-list.html" class="block py-2 text-gray-700 hover:text-blue-600">Doctors</a>
@@ -55,14 +56,16 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-bold mb-4">Welcome to IST Medical College & Hospital</h1>
-      <p class="text-xl mb-8">Providing Quality Healthcare Services with Compassion and Excellence</p>
-      <div class="flex justify-center space-x-4">
-        <a href="appointment.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Book Appointment</a>
-        <a href="doctor-list.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">View Doctors</a>
+  <!-- Hero Section (with background image) -->
+  <section class="relative text-white">
+    <div class="h-screen bg-cover bg-center flex items-center" style="background-image: linear-gradient(rgba(4,9,20,0.45), rgba(4,9,20,0.45)), url('https://media.gettyimages.com/id/1312706413/photo/modern-hospital-building.jpg?s=612x612&w=gi&k=20&c=1-EC4Mxf--5u4ItDIzrIOrduXlbKRnbx9xWWtiifrDo=');">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 hero-float">Welcome to IST Medical College & Hospital</h1>
+        <p class="text-lg md:text-xl mb-6">Providing Quality Healthcare Services with Compassion and Excellence</p>
+        <div class="flex justify-center space-x-4">
+          <a href="appointment.html" class="bg-white text-blue-600 px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Book Appointment</a>
+          <a href="doctor-list.html" class="bg-transparent border-2 border-white text-white px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">View Doctors</a>
+        </div>
       </div>
     </div>
   </section>
@@ -105,6 +108,50 @@
       </div>
     </div>
   </section>
+
+  <!-- Featured Doctors -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-800 mb-8">Featured Doctors</h2>
+      <div id="featuredDoctors" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Filled by script -->
+      </div>
+      <div class="text-center mt-6">
+        <a href="doctor-list.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg">Meet All Doctors</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor Modal (shared) -->
+  <div id="doctorModalBackdrop" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-card max-w-4xl mx-4" id="doctorModalContainer">
+      <div class="md:flex">
+        <div class="md:w-1/2">
+          <img src="assets/doctor_1.png" alt="Doctor" class="w-full h-full object-cover doctor-image-large">
+        </div>
+        <div class="md:w-1/2 p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="text-2xl font-bold doc-name"></h2>
+              <p class="text-sm text-gray-600 doc-dept"></p>
+            </div>
+            <button class="doctor-modal-close text-gray-500 hover:text-gray-800">&times;</button>
+          </div>
+          <div class="mt-4 doc-professional text-gray-700"></div>
+          <div class="mt-4 space-y-2 text-sm text-gray-700">
+            <p><strong>Qualification:</strong> <span class="doc-qual"></span></p>
+            <p><strong>Experience:</strong> <span class="doc-exp"></span></p>
+            <p><strong>Schedule:</strong> <span class="doc-schedule"></span></p>
+            <p><strong>Email:</strong> <span class="doc-email"></span></p>
+            <p><strong>Status:</strong> <span class="doc-availability"></span></p>
+          </div>
+          <div class="mt-6">
+            <a id="modalBookBtn" href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg">Book Appointment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Why Choose Us -->
   <section class="bg-blue-50 py-16">
@@ -181,8 +228,26 @@
     // Update navigation on page load
     document.addEventListener('DOMContentLoaded', function() {
       updateNavigation();
+      // load featured doctors
+      const data = getData();
+      const featured = document.getElementById('featuredDoctors');
+      if(data && data.doctors && data.doctors.length > 0){
+        const list = data.doctors.slice(0,3).map(doc => `
+          <div data-doctor-id="${doc.id}" class="bg-white rounded-lg shadow p-4 text-center cursor-pointer card-img-zoom">
+            <div class="h-40 overflow-hidden rounded-md mb-4">
+              <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover">
+            </div>
+            <h4 class="font-bold text-lg text-blue-800">${doc.name}</h4>
+            <p class="text-sm text-gray-600">${doc.department}</p>
+          </div>
+        `).join('');
+        featured.innerHTML = list;
+      } else {
+        featured.innerHTML = '<p class="text-gray-600 col-span-full">No featured doctors.</p>';
+      }
     });
   </script>
+  <script src="js/doctor-modal.js"></script>
 </body>
 </html>
 

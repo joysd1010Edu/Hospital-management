@@ -115,10 +115,21 @@ function updateNavigation() {
 }
 
 // Mobile menu toggle
+// Mobile menu toggle with animation (adds/removes 'show' class and handles hidden)
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobileMenu');
-  if (mobileMenu) {
-    mobileMenu.classList.toggle('hidden');
+  if (!mobileMenu) return;
+
+  // If currently shown, hide with animation
+  if (mobileMenu.classList.contains('show')) {
+    mobileMenu.classList.remove('show');
+    // after transition, add hidden to remove from flow
+    setTimeout(() => mobileMenu.classList.add('hidden'), 320);
+  } else {
+    // Remove hidden first so it's measurable, then show
+    mobileMenu.classList.remove('hidden');
+    // force reflow then add show class
+    requestAnimationFrame(() => mobileMenu.classList.add('show'));
   }
 }
 

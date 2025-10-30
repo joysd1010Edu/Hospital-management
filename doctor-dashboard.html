@@ -1,588 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctor Dashboard - IST Medical College & Hospital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/btn-animations.css" />
-  </head>
-  <body class="bg-gray-50">
-    <div class="flex h-screen overflow-hidden">
-      <!-- Sidebar -->
-      <aside
-        id="sidebar"
-        class="w-64 bg-blue-800 text-white flex-shrink-0 overflow-y-auto"
-      >
-        <div class="p-6">
-          <div class="flex items-center space-x-2 mb-8">
-            <i class="fas fa-hospital text-3xl"></i>
-            <span class="text-lg font-bold">IST Medical</span>
-          </div>
-          <nav class="space-y-2">
-            <a
-              href="#"
-              onclick="showSection('dashboard')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700 active"
-            >
-              <i class="fas fa-home"></i>
-              <span>Dashboard</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('today')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-calendar-day"></i>
-              <span>Today's Appointments</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('appointments')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-calendar-check"></i>
-              <span>All Appointments</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('patients')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-users"></i>
-              <span>Patient Details</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('invoice')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-file-invoice"></i>
-              <span>Generate Invoice</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('suggestions')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-comment"></i>
-              <span>Suggestions</span>
-            </a>
-            <a
-              href="#"
-              onclick="handleLogout()"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-red-700"
-            >
-              <i class="fas fa-sign-out-alt"></i>
-              <span>Logout</span>
-            </a>
-          </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard - IST Medical College & Hospital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-blue-800 text-white flex-shrink-0 overflow-y-auto">
+      <div class="p-6">
+        <div class="flex items-center space-x-2 mb-8">
+          <i class="fas fa-hospital text-3xl"></i>
+          <span class="text-lg font-bold">IST Medical</span>
         </div>
-      </aside>
-
-      <!-- Main Content -->
-      <div class="flex-1 flex flex-col overflow-hidden">
-        <!-- Top Bar -->
-        <header class="bg-white shadow-md p-4">
-          <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-800">Doctor Dashboard</h1>
-            <div class="flex items-center space-x-4">
-              <span id="userName" class="text-gray-700 font-semibold"></span>
-              <i class="fas fa-user-md text-blue-600 text-3xl"></i>
-            </div>
-          </div>
-        </header>
-
-        <!-- Content Area -->
-        <main class="flex-1 overflow-y-auto p-6">
-          <!-- Dashboard Overview -->
-          <div id="dashboard-section" class="content-section">
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Welcome, Doctor!
-            </h2>
-
-            <!-- Stats Cards -->
-            <div class="grid md:grid-cols-4 gap-6 mb-8">
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Total Appointments</p>
-                    <p
-                      id="totalAppointments"
-                      class="text-3xl font-bold text-blue-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-calendar text-blue-600 text-4xl"></i>
-                </div>
-              </div>
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Today's Appointments</p>
-                    <p
-                      id="todayAppointments"
-                      class="text-3xl font-bold text-green-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-clock text-green-600 text-4xl"></i>
-                </div>
-              </div>
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Completed</p>
-                    <p
-                      id="completedAppointments"
-                      class="text-3xl font-bold text-purple-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-check-circle text-purple-600 text-4xl"></i>
-                </div>
-              </div>
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Pending</p>
-                    <p
-                      id="pendingAppointments"
-                      class="text-3xl font-bold text-yellow-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-hourglass-half text-yellow-600 text-4xl"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-              <h3 class="text-xl font-bold text-blue-800 mb-4">
-                Quick Actions
-              </h3>
-              <div class="grid md:grid-cols-3 gap-4">
-                <button
-                  onclick="showSection('today')"
-                  class="bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition"
-                >
-                  <i class="fas fa-calendar-day text-2xl mb-2"></i>
-                  <p class="font-semibold">Today's Schedule</p>
-                </button>
-                <button
-                  onclick="showSection('appointments')"
-                  class="bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition"
-                >
-                  <i class="fas fa-list text-2xl mb-2"></i>
-                  <p class="font-semibold">All Appointments</p>
-                </button>
-                <button
-                  onclick="showSection('invoice')"
-                  class="bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 transition"
-                >
-                  <i class="fas fa-file-invoice text-2xl mb-2"></i>
-                  <p class="font-semibold">Generate Invoice</p>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Today's Appointments -->
-          <div id="today-section" class="content-section" style="display: none">
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Today's Appointments
-            </h2>
-            <div id="todayList" class="space-y-4"></div>
-          </div>
-
-          <!-- All Appointments -->
-          <div
-            id="appointments-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              All Appointments
-            </h2>
-            <div id="appointmentsList" class="space-y-4"></div>
-          </div>
-
-          <!-- Patient Details -->
-          <div
-            id="patients-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Patient Details
-            </h2>
-            <div id="patientsList" class="space-y-4"></div>
-          </div>
-
-          <!-- Generate Invoice -->
-          <div
-            id="invoice-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Generate Invoice
-            </h2>
-            <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
-              <form id="invoiceForm" onsubmit="handleGenerateInvoice(event)">
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Select Appointment *</label
-                  >
-                  <select
-                    id="appointmentId"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  >
-                    <option value="">Choose an appointment</option>
-                  </select>
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Services *</label
-                  >
-                  <input
-                    type="text"
-                    id="services"
-                    required
-                    value="Consultation"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Amount (৳) *</label
-                  >
-                  <input
-                    type="number"
-                    id="amount"
-                    required
-                    min="0"
-                    step="0.01"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-                >
-                  Generate Invoice
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <!-- Suggestions -->
-          <div
-            id="suggestions-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Patient Suggestions & Complaints
-            </h2>
-            <div id="suggestionsList" class="space-y-4"></div>
-          </div>
-        </main>
+        <nav class="space-y-2">
+          <a href="#" onclick="showSection('dashboard')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700 active">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" onclick="showSection('today')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-calendar-day"></i>
+            <span>Today's Appointments</span>
+          </a>
+          <a href="#" onclick="showSection('appointments')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-calendar-check"></i>
+            <span>All Appointments</span>
+          </a>
+          <a href="#" onclick="showSection('patients')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-users"></i>
+            <span>Patient Details</span>
+          </a>
+          <a href="#" onclick="showSection('invoice')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-file-invoice"></i>
+            <span>Generate Invoice</span>
+          </a>
+          <a href="#" onclick="showSection('suggestions')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-comment"></i>
+            <span>Suggestions</span>
+          </a>
+          <a href="#" onclick="handleLogout()" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-red-700">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </nav>
       </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-md p-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-blue-800">Doctor Dashboard</h1>
+          <div class="flex items-center space-x-4">
+            <span id="userName" class="text-gray-700 font-semibold"></span>
+            <i class="fas fa-user-md text-blue-600 text-3xl"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Dashboard Overview -->
+        <div id="dashboard-section" class="content-section">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Welcome, Doctor!</h2>
+          
+          <!-- Stats Cards -->
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Total Appointments</p>
+                  <p id="totalAppointments" class="text-3xl font-bold text-blue-600">0</p>
+                </div>
+                <i class="fas fa-calendar text-blue-600 text-4xl"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Today's Appointments</p>
+                  <p id="todayAppointments" class="text-3xl font-bold text-green-600">0</p>
+                </div>
+                <i class="fas fa-clock text-green-600 text-4xl"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Completed</p>
+                  <p id="completedAppointments" class="text-3xl font-bold text-purple-600">0</p>
+                </div>
+                <i class="fas fa-check-circle text-purple-600 text-4xl"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Pending</p>
+                  <p id="pendingAppointments" class="text-3xl font-bold text-yellow-600">0</p>
+                </div>
+                <i class="fas fa-hourglass-half text-yellow-600 text-4xl"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-4">Quick Actions</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <button onclick="showSection('today')" class="bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition">
+                <i class="fas fa-calendar-day text-2xl mb-2"></i>
+                <p class="font-semibold">Today's Schedule</p>
+              </button>
+              <button onclick="showSection('appointments')" class="bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition">
+                <i class="fas fa-list text-2xl mb-2"></i>
+                <p class="font-semibold">All Appointments</p>
+              </button>
+              <button onclick="showSection('invoice')" class="bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 transition">
+                <i class="fas fa-file-invoice text-2xl mb-2"></i>
+                <p class="font-semibold">Generate Invoice</p>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Appointments -->
+        <div id="today-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Today's Appointments</h2>
+          <div id="todayList" class="space-y-4"></div>
+        </div>
+
+        <!-- All Appointments -->
+        <div id="appointments-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">All Appointments</h2>
+          <div id="appointmentsList" class="space-y-4"></div>
+        </div>
+
+        <!-- Patient Details -->
+        <div id="patients-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Patient Details</h2>
+          <div id="patientsList" class="space-y-4"></div>
+        </div>
+
+        <!-- Generate Invoice -->
+        <div id="invoice-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Generate Invoice</h2>
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+            <form id="invoiceForm" onsubmit="handleGenerateInvoice(event)">
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Select Appointment *</label>
+                <select id="appointmentId" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                  <option value="">Choose an appointment</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Services *</label>
+                <input type="text" id="services" required value="Consultation" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Amount (৳) *</label>
+                <input type="number" id="amount" required min="0" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+              </div>
+              <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Generate Invoice</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div id="suggestions-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Patient Suggestions & Complaints</h2>
+          <div id="suggestionsList" class="space-y-4"></div>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/appointments.js"></script>
-    <script src="js/invoice.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/btn-animations.js"></script>
-    <script>
-      let currentUser = null;
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/appointments.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    let currentUser = null;
 
-      document.addEventListener("DOMContentLoaded", function () {
-        if (!requireAuth(["doctor"])) return;
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth(['doctor'])) return;
+      
+      currentUser = getCurrentUser();
+      document.getElementById('userName').textContent = currentUser.name;
+      
+      loadDashboardStats();
+    });
 
-        currentUser = getCurrentUser();
-        document.getElementById("userName").textContent = currentUser.name;
+    function showSection(section) {
+      document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active', 'bg-blue-700'));
+      
+      document.getElementById(section + '-section').style.display = 'block';
+      event.target.closest('.nav-item').classList.add('active', 'bg-blue-700');
+      
+      if (section === 'today') loadTodayAppointments();
+      if (section === 'appointments') loadAllAppointments();
+      if (section === 'patients') loadPatients();
+      if (section === 'invoice') loadInvoiceForm();
+      if (section === 'suggestions') loadSuggestions();
+    }
 
-        loadDashboardStats();
-      });
+    function loadDashboardStats() {
+      const stats = getDoctorStats(currentUser.id);
+      document.getElementById('totalAppointments').textContent = stats.totalAppointments;
+      document.getElementById('todayAppointments').textContent = stats.todayAppointments;
+      document.getElementById('completedAppointments').textContent = stats.completedAppointments;
+      document.getElementById('pendingAppointments').textContent = stats.pendingAppointments;
+    }
 
-      function showSection(section) {
-        document
-          .querySelectorAll(".content-section")
-          .forEach((s) => (s.style.display = "none"));
-        document
-          .querySelectorAll(".nav-item")
-          .forEach((n) => n.classList.remove("active", "bg-blue-700"));
-
-        document.getElementById(section + "-section").style.display = "block";
-        event.target
-          .closest(".nav-item")
-          .classList.add("active", "bg-blue-700");
-
-        if (section === "today") loadTodayAppointments();
-        if (section === "appointments") loadAllAppointments();
-        if (section === "patients") loadPatients();
-        if (section === "invoice") loadInvoiceForm();
-        if (section === "suggestions") loadSuggestions();
+    function loadTodayAppointments() {
+      const appointments = getTodayAppointments(currentUser.id);
+      const list = document.getElementById('todayList');
+      
+      if (appointments.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No appointments today.</p>';
+        return;
       }
-
-      function loadDashboardStats() {
-        const stats = getDoctorStats(currentUser.id);
-        document.getElementById("totalAppointments").textContent =
-          stats.totalAppointments;
-        document.getElementById("todayAppointments").textContent =
-          stats.todayAppointments;
-        document.getElementById("completedAppointments").textContent =
-          stats.completedAppointments;
-        document.getElementById("pendingAppointments").textContent =
-          stats.pendingAppointments;
-      }
-
-      function loadTodayAppointments() {
-        const appointments = getTodayAppointments(currentUser.id);
-        const list = document.getElementById("todayList");
-
-        if (appointments.length === 0) {
-          list.innerHTML =
-            '<p class="text-gray-600">No appointments today.</p>';
-          return;
-        }
-
-        const details = getAllAppointmentsWithDetails(appointments);
-        list.innerHTML = details
-          .map((apt) => {
-            const statusColor =
-              apt.status === "Completed"
-                ? "bg-green-100 text-green-800"
-                : apt.status === "Cancelled"
-                ? "bg-red-100 text-red-800"
-                : "bg-yellow-100 text-yellow-800";
-            return `
+      
+      const details = getAllAppointmentsWithDetails(appointments);
+      list.innerHTML = details.map(apt => {
+        const statusColor = apt.status === 'Completed' ? 'bg-green-100 text-green-800' : 
+                           apt.status === 'Cancelled' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800';
+        return `
           <div class="bg-white rounded-lg shadow p-4">
             <div class="flex justify-between items-start mb-2">
               <div>
                 <h3 class="font-bold text-lg">${apt.patientName}</h3>
                 <p class="text-gray-600">${apt.time}</p>
               </div>
-              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">${
-              apt.status
-            }</span>
+              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">${apt.status}</span>
             </div>
-            <p class="text-gray-600"><strong>Phone:</strong> ${
-              apt.patientPhone
-            }</p>
-            ${
-              apt.reason
-                ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>`
-                : ""
-            }
-            ${
-              apt.status === "Pending"
-                ? `
+            <p class="text-gray-600"><strong>Phone:</strong> ${apt.patientPhone}</p>
+            ${apt.reason ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>` : ''}
+            ${apt.status === 'Pending' ? `
               <div class="flex space-x-2 mt-2">
                 <button onclick="completeApt('${apt.id}')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Complete</button>
                 <button onclick="cancelApt('${apt.id}')" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Cancel</button>
               </div>
-            `
-                : ""
-            }
+            ` : ''}
           </div>
         `;
-          })
-          .join("");
+      }).join('');
+    }
+
+    function loadAllAppointments() {
+      const appointments = getDoctorAppointments(currentUser.id);
+      const list = document.getElementById('appointmentsList');
+      
+      if (appointments.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No appointments found.</p>';
+        return;
       }
-
-      function loadAllAppointments() {
-        const appointments = getDoctorAppointments(currentUser.id);
-        const list = document.getElementById("appointmentsList");
-
-        if (appointments.length === 0) {
-          list.innerHTML =
-            '<p class="text-gray-600">No appointments found.</p>';
-          return;
-        }
-
-        const details = getAllAppointmentsWithDetails(appointments);
-        list.innerHTML = details
-          .map((apt) => {
-            const statusColor =
-              apt.status === "Completed"
-                ? "bg-green-100 text-green-800"
-                : apt.status === "Cancelled"
-                ? "bg-red-100 text-red-800"
-                : "bg-yellow-100 text-yellow-800";
-            return `
+      
+      const details = getAllAppointmentsWithDetails(appointments);
+      list.innerHTML = details.map(apt => {
+        const statusColor = apt.status === 'Completed' ? 'bg-green-100 text-green-800' : 
+                           apt.status === 'Cancelled' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800';
+        return `
           <div class="bg-white rounded-lg shadow p-4">
             <div class="flex justify-between items-start mb-2">
               <div>
                 <h3 class="font-bold text-lg">${apt.patientName}</h3>
-                <p class="text-gray-600">${formatDate(apt.date)} at ${
-              apt.time
-            }</p>
+                <p class="text-gray-600">${formatDate(apt.date)} at ${apt.time}</p>
               </div>
-              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">${
-              apt.status
-            }</span>
+              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">${apt.status}</span>
             </div>
-            <p class="text-gray-600"><strong>Phone:</strong> ${
-              apt.patientPhone
-            }</p>
-            ${
-              apt.reason
-                ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>`
-                : ""
-            }
-            ${
-              apt.status === "Pending"
-                ? `
+            <p class="text-gray-600"><strong>Phone:</strong> ${apt.patientPhone}</p>
+            ${apt.reason ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>` : ''}
+            ${apt.status === 'Pending' ? `
               <div class="flex space-x-2 mt-2">
                 <button onclick="completeApt('${apt.id}')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Complete</button>
                 <button onclick="cancelApt('${apt.id}')" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Cancel</button>
               </div>
-            `
-                : ""
-            }
+            ` : ''}
           </div>
         `;
-          })
-          .join("");
-      }
+      }).join('');
+    }
 
-      function completeApt(id) {
-        if (completeAppointment(id)) {
+    function completeApt(id) {
+      if (completeAppointment(id)) {
+        loadAllAppointments();
+        loadTodayAppointments();
+        loadDashboardStats();
+      }
+    }
+
+    function cancelApt(id) {
+      if (confirm('Cancel this appointment?')) {
+        if (cancelAppointment(id)) {
           loadAllAppointments();
           loadTodayAppointments();
           loadDashboardStats();
         }
       }
+    }
 
-      function cancelApt(id) {
-        if (confirm("Cancel this appointment?")) {
-          if (cancelAppointment(id)) {
-            loadAllAppointments();
-            loadTodayAppointments();
-            loadDashboardStats();
-          }
-        }
+    function loadPatients() {
+      const appointments = getDoctorAppointments(currentUser.id);
+      const list = document.getElementById('patientsList');
+      
+      if (appointments.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No patients found.</p>';
+        return;
       }
-
-      function loadPatients() {
-        const appointments = getDoctorAppointments(currentUser.id);
-        const list = document.getElementById("patientsList");
-
-        if (appointments.length === 0) {
-          list.innerHTML = '<p class="text-gray-600">No patients found.</p>';
-          return;
+      
+      const details = getAllAppointmentsWithDetails(appointments);
+      const uniquePatients = {};
+      details.forEach(apt => {
+        if (!uniquePatients[apt.patientId]) {
+          uniquePatients[apt.patientId] = {
+            id: apt.patientId,
+            name: apt.patientName,
+            email: apt.patientEmail,
+            phone: apt.patientPhone,
+            appointments: []
+          };
         }
-
-        const details = getAllAppointmentsWithDetails(appointments);
-        const uniquePatients = {};
-        details.forEach((apt) => {
-          if (!uniquePatients[apt.patientId]) {
-            uniquePatients[apt.patientId] = {
-              id: apt.patientId,
-              name: apt.patientName,
-              email: apt.patientEmail,
-              phone: apt.patientPhone,
-              appointments: [],
-            };
-          }
-          uniquePatients[apt.patientId].appointments.push(apt);
-        });
-
-        list.innerHTML = Object.values(uniquePatients)
-          .map(
-            (patient) => `
+        uniquePatients[apt.patientId].appointments.push(apt);
+      });
+      
+      list.innerHTML = Object.values(uniquePatients).map(patient => `
         <div class="bg-white rounded-lg shadow p-4">
           <h3 class="font-bold text-lg">${patient.name}</h3>
           <p class="text-gray-600"><strong>Email:</strong> ${patient.email}</p>
           <p class="text-gray-600"><strong>Phone:</strong> ${patient.phone}</p>
           <p class="text-gray-600"><strong>Total Appointments:</strong> ${patient.appointments.length}</p>
         </div>
-      `
-          )
-          .join("");
+      `).join('');
+    }
+
+    function loadInvoiceForm() {
+      const appointments = getDoctorAppointments(currentUser.id).filter(apt => apt.status === 'Completed');
+      const select = document.getElementById('appointmentId');
+      select.innerHTML = '<option value="">Choose an appointment</option>';
+      
+      const details = getAllAppointmentsWithDetails(appointments);
+      details.forEach(apt => {
+        select.innerHTML += `<option value="${apt.id}">${apt.patientName} - ${formatDate(apt.date)}</option>`;
+      });
+    }
+
+    function handleGenerateInvoice(event) {
+      event.preventDefault();
+      const data = {
+        appointmentId: document.getElementById('appointmentId').value,
+        services: document.getElementById('services').value,
+        amount: document.getElementById('amount').value
+      };
+      if (generateInvoice(data)) {
+        document.getElementById('invoiceForm').reset();
+        loadInvoiceForm();
       }
+    }
 
-      function loadInvoiceForm() {
-        const appointments = getDoctorAppointments(currentUser.id).filter(
-          (apt) => apt.status === "Completed"
-        );
-        const select = document.getElementById("appointmentId");
-        select.innerHTML = '<option value="">Choose an appointment</option>';
-
-        const details = getAllAppointmentsWithDetails(appointments);
-        details.forEach((apt) => {
-          select.innerHTML += `<option value="${apt.id}">${
-            apt.patientName
-          } - ${formatDate(apt.date)}</option>`;
-        });
+    function loadSuggestions() {
+      const suggestions = getAllSuggestions();
+      const list = document.getElementById('suggestionsList');
+      
+      if (suggestions.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No suggestions found.</p>';
+        return;
       }
-
-      function handleGenerateInvoice(event) {
-        event.preventDefault();
-        const data = {
-          appointmentId: document.getElementById("appointmentId").value,
-          services: document.getElementById("services").value,
-          amount: document.getElementById("amount").value,
-        };
-        if (generateInvoice(data)) {
-          document.getElementById("invoiceForm").reset();
-          loadInvoiceForm();
-        }
-      }
-
-      function loadSuggestions() {
-        const suggestions = getAllSuggestions();
-        const list = document.getElementById("suggestionsList");
-
-        if (suggestions.length === 0) {
-          list.innerHTML = '<p class="text-gray-600">No suggestions found.</p>';
-          return;
-        }
-
-        list.innerHTML = suggestions
-          .map(
-            (sug) => `
+      
+      list.innerHTML = suggestions.map(sug => `
         <div class="bg-white rounded-lg shadow p-4">
           <div class="flex justify-between items-start mb-2">
             <h3 class="font-bold text-lg">${sug.subject}</h3>
-            <span class="px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">${
-              sug.userType
-            }</span>
+            <span class="px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">${sug.userType}</span>
           </div>
-          <p class="text-gray-600"><strong>From:</strong> ${sug.userName} ${
-              sug.email ? `(${sug.email})` : ""
-            }</p>
+          <p class="text-gray-600"><strong>From:</strong> ${sug.userName} ${sug.email ? `(${sug.email})` : ''}</p>
           <p class="text-gray-600 mt-2">${sug.message}</p>
-          <p class="text-gray-500 text-sm mt-2">${formatDate(
-            sug.createdAt.split("T")[0]
-          )}</p>
+          <p class="text-gray-500 text-sm mt-2">${formatDate(sug.createdAt.split('T')[0])}</p>
         </div>
-      `
-          )
-          .join("");
-      }
+      `).join('');
+    }
 
-      function handleLogout() {
-        if (confirm("Are you sure you want to logout?")) {
-          logout();
-        }
+    function handleLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        logout();
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
+

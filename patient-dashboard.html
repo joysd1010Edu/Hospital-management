@@ -1,807 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Patient Dashboard - IST Medical College & Hospital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/btn-animations.css" />
-  </head>
-  <body class="bg-gray-50">
-    <div class="flex h-screen overflow-hidden">
-      <!-- Sidebar -->
-      <aside
-        id="sidebar"
-        class="w-64 bg-blue-800 text-white flex-shrink-0 overflow-y-auto"
-      >
-        <div class="p-6">
-          <div class="flex items-center space-x-2 mb-8">
-            <i class="fas fa-hospital text-3xl"></i>
-            <span class="text-lg font-bold">IST Medical</span>
-          </div>
-          <nav class="space-y-2">
-            <a
-              href="#"
-              onclick="showSection('dashboard')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700 active"
-            >
-              <i class="fas fa-home"></i>
-              <span>Dashboard</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('book-appointment')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-calendar-plus"></i>
-              <span>Book Appointment</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('appointments')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-calendar-check"></i>
-              <span>My Appointments</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('invoices')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-file-invoice"></i>
-              <span>Invoices</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('seat-booking')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-bed"></i>
-              <span>Seat Booking</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('suggestions')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-comment"></i>
-              <span>Suggestions</span>
-            </a>
-            <a
-              href="#"
-              onclick="showSection('profile')"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700"
-            >
-              <i class="fas fa-user-edit"></i>
-              <span>Edit Profile</span>
-            </a>
-            <a
-              href="#"
-              onclick="handleLogout()"
-              class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-red-700"
-            >
-              <i class="fas fa-sign-out-alt"></i>
-              <span>Logout</span>
-            </a>
-          </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard - IST Medical College & Hospital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-blue-800 text-white flex-shrink-0 overflow-y-auto">
+      <div class="p-6">
+        <div class="flex items-center space-x-2 mb-8">
+          <i class="fas fa-hospital text-3xl"></i>
+          <span class="text-lg font-bold">IST Medical</span>
         </div>
-      </aside>
+        <nav class="space-y-2">
+          <a href="#" onclick="showSection('dashboard')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700 active">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" onclick="showSection('book-appointment')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-calendar-plus"></i>
+            <span>Book Appointment</span>
+          </a>
+          <a href="#" onclick="showSection('appointments')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-calendar-check"></i>
+            <span>My Appointments</span>
+          </a>
+          <a href="#" onclick="showSection('invoices')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-file-invoice"></i>
+            <span>Invoices</span>
+          </a>
+          <a href="#" onclick="showSection('seat-booking')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-bed"></i>
+            <span>Seat Booking</span>
+          </a>
+          <a href="#" onclick="showSection('suggestions')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-comment"></i>
+            <span>Suggestions</span>
+          </a>
+          <a href="#" onclick="showSection('profile')" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-user-edit"></i>
+            <span>Edit Profile</span>
+          </a>
+          <a href="#" onclick="handleLogout()" class="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-red-700">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
 
-      <!-- Main Content -->
-      <div class="flex-1 flex flex-col overflow-hidden">
-        <!-- Top Bar -->
-        <header class="bg-white shadow-md p-4">
-          <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-800">Patient Dashboard</h1>
-            <div class="flex items-center space-x-4">
-              <span id="userName" class="text-gray-700 font-semibold"></span>
-              <i class="fas fa-user-circle text-blue-600 text-3xl"></i>
-            </div>
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-md p-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-blue-800">Patient Dashboard</h1>
+          <div class="flex items-center space-x-4">
+            <span id="userName" class="text-gray-700 font-semibold"></span>
+            <i class="fas fa-user-circle text-blue-600 text-3xl"></i>
           </div>
-        </header>
+        </div>
+      </header>
 
-        <!-- Content Area -->
-        <main class="flex-1 overflow-y-auto p-6">
-          <!-- Dashboard Overview -->
-          <div id="dashboard-section" class="content-section">
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">Welcome Back!</h2>
-
-            <!-- Stats Cards -->
-            <div class="grid md:grid-cols-4 gap-6 mb-8">
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Total Appointments</p>
-                    <p
-                      id="totalAppointments"
-                      class="text-3xl font-bold text-blue-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-calendar text-blue-600 text-4xl"></i>
-                </div>
-              </div>
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Upcoming</p>
-                    <p
-                      id="upcomingAppointments"
-                      class="text-3xl font-bold text-green-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-clock text-green-600 text-4xl"></i>
-                </div>
-              </div>
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Total Invoices</p>
-                    <p
-                      id="totalInvoices"
-                      class="text-3xl font-bold text-purple-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i class="fas fa-file-invoice text-purple-600 text-4xl"></i>
-                </div>
-              </div>
-              <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <p class="text-gray-600 text-sm">Unpaid Bills</p>
-                    <p
-                      id="unpaidInvoices"
-                      class="text-3xl font-bold text-red-600"
-                    >
-                      0
-                    </p>
-                  </div>
-                  <i
-                    class="fas fa-exclamation-circle text-red-600 text-4xl"
-                  ></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Quick Actions -->
+      <!-- Content Area -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Dashboard Overview -->
+        <div id="dashboard-section" class="content-section">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Welcome Back!</h2>
+          
+          <!-- Stats Cards -->
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow-lg p-6">
-              <h3 class="text-xl font-bold text-blue-800 mb-4">
-                Quick Actions
-              </h3>
-              <div class="grid md:grid-cols-3 gap-4">
-                <button
-                  onclick="showSection('book-appointment')"
-                  class="bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition"
-                >
-                  <i class="fas fa-calendar-plus text-2xl mb-2"></i>
-                  <p class="font-semibold">Book Appointment</p>
-                </button>
-                <button
-                  onclick="showSection('appointments')"
-                  class="bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition"
-                >
-                  <i class="fas fa-list text-2xl mb-2"></i>
-                  <p class="font-semibold">View Appointments</p>
-                </button>
-                <button
-                  onclick="showSection('invoices')"
-                  class="bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 transition"
-                >
-                  <i class="fas fa-file-invoice text-2xl mb-2"></i>
-                  <p class="font-semibold">View Invoices</p>
-                </button>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Total Appointments</p>
+                  <p id="totalAppointments" class="text-3xl font-bold text-blue-600">0</p>
+                </div>
+                <i class="fas fa-calendar text-blue-600 text-4xl"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Upcoming</p>
+                  <p id="upcomingAppointments" class="text-3xl font-bold text-green-600">0</p>
+                </div>
+                <i class="fas fa-clock text-green-600 text-4xl"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Total Invoices</p>
+                  <p id="totalInvoices" class="text-3xl font-bold text-purple-600">0</p>
+                </div>
+                <i class="fas fa-file-invoice text-purple-600 text-4xl"></i>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm">Unpaid Bills</p>
+                  <p id="unpaidInvoices" class="text-3xl font-bold text-red-600">0</p>
+                </div>
+                <i class="fas fa-exclamation-circle text-red-600 text-4xl"></i>
               </div>
             </div>
           </div>
 
-          <!-- Book Appointment Section -->
-          <div
-            id="book-appointment-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Book New Appointment
-            </h2>
-            <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
-              <form
-                id="appointmentForm"
-                onsubmit="handleBookAppointment(event)"
-              >
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Select Doctor *</label
-                  >
-                  <select
-                    id="doctorId"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  ></select>
-                </div>
-                <div class="grid md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Date *</label
-                    >
-                    <input
-                      type="date"
-                      id="aptDate"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Time *</label
-                    >
-                    <select
-                      id="aptTime"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    >
-                      <option value="">Select time</option>
-                      <option value="09:00 AM">09:00 AM</option>
-                      <option value="10:00 AM">10:00 AM</option>
-                      <option value="11:00 AM">11:00 AM</option>
-                      <option value="12:00 PM">12:00 PM</option>
-                      <option value="02:00 PM">02:00 PM</option>
-                      <option value="03:00 PM">03:00 PM</option>
-                      <option value="04:00 PM">04:00 PM</option>
-                      <option value="05:00 PM">05:00 PM</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Reason</label
-                  >
-                  <textarea
-                    id="aptReason"
-                    rows="4"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-                >
-                  Book Appointment
-                </button>
-              </form>
+          <!-- Quick Actions -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-4">Quick Actions</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <button onclick="showSection('book-appointment')" class="bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition">
+                <i class="fas fa-calendar-plus text-2xl mb-2"></i>
+                <p class="font-semibold">Book Appointment</p>
+              </button>
+              <button onclick="showSection('appointments')" class="bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition">
+                <i class="fas fa-list text-2xl mb-2"></i>
+                <p class="font-semibold">View Appointments</p>
+              </button>
+              <button onclick="showSection('invoices')" class="bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 transition">
+                <i class="fas fa-file-invoice text-2xl mb-2"></i>
+                <p class="font-semibold">View Invoices</p>
+              </button>
             </div>
           </div>
+        </div>
 
-          <!-- Appointments Section -->
-          <div
-            id="appointments-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              My Appointments
-            </h2>
-            <div id="appointmentsList" class="space-y-4"></div>
-          </div>
-
-          <!-- Invoices Section -->
-          <div
-            id="invoices-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">My Invoices</h2>
-            <div id="invoicesList" class="space-y-4"></div>
-          </div>
-
-          <!-- Seat Booking Section -->
-          <div
-            id="seat-booking-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">Seat Booking</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl mb-6">
-              <form id="seatForm" onsubmit="handleSeatBooking(event)">
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Patient Name *</label
-                  >
-                  <input
-                    type="text"
-                    id="seatPatientName"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  />
+        <!-- Book Appointment Section -->
+        <div id="book-appointment-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Book New Appointment</h2>
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+            <form id="appointmentForm" onsubmit="handleBookAppointment(event)">
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Select Doctor *</label>
+                <select id="doctorId" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"></select>
+              </div>
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Date *</label>
+                  <input type="date" id="aptDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
                 </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Phone *</label
-                  >
-                  <input
-                    type="tel"
-                    id="seatPhone"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  />
-                </div>
-                <div class="grid md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Date *</label
-                    >
-                    <input
-                      type="date"
-                      id="seatDate"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Seat Type *</label
-                    >
-                    <select
-                      id="seatType"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    >
-                      <option value="">Select type</option>
-                      <option value="General Ward">General Ward</option>
-                      <option value="Private Room">Private Room</option>
-                      <option value="Semi-Private Room">
-                        Semi-Private Room
-                      </option>
-                      <option value="ICU">ICU</option>
-                      <option value="CCU">CCU</option>
-                    </select>
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-                >
-                  Book Seat
-                </button>
-              </form>
-            </div>
-            <div id="seatBookingsList" class="space-y-4"></div>
-          </div>
-
-          <!-- Suggestions Section -->
-          <div
-            id="suggestions-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">
-              Submit Suggestion
-            </h2>
-            <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
-              <form id="suggestionForm" onsubmit="handleSuggestion(event)">
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Subject *</label
-                  >
-                  <input
-                    type="text"
-                    id="sugSubject"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Message *</label
-                  >
-                  <textarea
-                    id="sugMessage"
-                    required
-                    rows="6"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <!-- Profile Section -->
-          <div
-            id="profile-section"
-            class="content-section"
-            style="display: none"
-          >
-            <h2 class="text-3xl font-bold text-blue-800 mb-6">Edit Profile</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
-              <form id="profileForm" onsubmit="handleProfileUpdate(event)">
-                <div class="grid md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Name *</label
-                    >
-                    <input
-                      type="text"
-                      id="profileName"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Email *</label
-                    >
-                    <input
-                      type="email"
-                      id="profileEmail"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Phone *</label
-                    >
-                    <input
-                      type="tel"
-                      id="profilePhone"
-                      required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-gray-700 font-semibold mb-2"
-                      >Date of Birth</label
-                    >
-                    <input
-                      type="date"
-                      id="profileDob"
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Gender</label
-                  >
-                  <select
-                    id="profileGender"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  >
-                    <option value="">Select</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Time *</label>
+                  <select id="aptTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                    <option value="">Select time</option>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
                   </select>
                 </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Address</label
-                  >
-                  <textarea
-                    id="profileAddress"
-                    rows="3"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-                >
-                  Update Profile
-                </button>
-              </form>
-            </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Reason</label>
+                <textarea id="aptReason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Book Appointment</button>
+            </form>
           </div>
-        </main>
-      </div>
+        </div>
+
+        <!-- Appointments Section -->
+        <div id="appointments-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">My Appointments</h2>
+          <div id="appointmentsList" class="space-y-4"></div>
+        </div>
+
+        <!-- Invoices Section -->
+        <div id="invoices-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">My Invoices</h2>
+          <div id="invoicesList" class="space-y-4"></div>
+        </div>
+
+        <!-- Seat Booking Section -->
+        <div id="seat-booking-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Seat Booking</h2>
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl mb-6">
+            <form id="seatForm" onsubmit="handleSeatBooking(event)">
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Patient Name *</label>
+                <input type="text" id="seatPatientName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Phone *</label>
+                <input type="tel" id="seatPhone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+              </div>
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Date *</label>
+                  <input type="date" id="seatDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Seat Type *</label>
+                  <select id="seatType" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                    <option value="">Select type</option>
+                    <option value="General Ward">General Ward</option>
+                    <option value="Private Room">Private Room</option>
+                    <option value="Semi-Private Room">Semi-Private Room</option>
+                    <option value="ICU">ICU</option>
+                    <option value="CCU">CCU</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Book Seat</button>
+            </form>
+          </div>
+          <div id="seatBookingsList" class="space-y-4"></div>
+        </div>
+
+        <!-- Suggestions Section -->
+        <div id="suggestions-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Submit Suggestion</h2>
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+            <form id="suggestionForm" onsubmit="handleSuggestion(event)">
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Subject *</label>
+                <input type="text" id="sugSubject" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Message *</label>
+                <textarea id="sugMessage" required rows="6" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profile-section" class="content-section" style="display:none;">
+          <h2 class="text-3xl font-bold text-blue-800 mb-6">Edit Profile</h2>
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+            <form id="profileForm" onsubmit="handleProfileUpdate(event)">
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Name *</label>
+                  <input type="text" id="profileName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+                  <input type="email" id="profileEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Phone *</label>
+                  <input type="tel" id="profilePhone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                  <label class="block text-gray-700 font-semibold mb-2">Date of Birth</label>
+                  <input type="date" id="profileDob" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Gender</label>
+                <select id="profileGender" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Address</label>
+                <textarea id="profileAddress" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Update Profile</button>
+            </form>
+          </div>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/appointments.js"></script>
-    <script src="js/invoice.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/btn-animations.js"></script>
-    <script>
-      let currentUser = null;
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/appointments.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    let currentUser = null;
 
-      document.addEventListener("DOMContentLoaded", function () {
-        if (!requireAuth(["patient"])) return;
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!requireAuth(['patient'])) return;
+      
+      currentUser = getCurrentUser();
+      document.getElementById('userName').textContent = currentUser.name;
+      
+      loadDashboardStats();
+      loadDoctorsDropdown();
+      setMinDates();
+      loadProfile();
+    });
 
-        currentUser = getCurrentUser();
-        document.getElementById("userName").textContent = currentUser.name;
+    function showSection(section) {
+      document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active', 'bg-blue-700'));
+      
+      document.getElementById(section + '-section').style.display = 'block';
+      event.target.closest('.nav-item').classList.add('active', 'bg-blue-700');
+      
+      if (section === 'appointments') loadAppointmentsList();
+      if (section === 'invoices') loadInvoicesList();
+      if (section === 'seat-booking') loadSeatBookingsList();
+    }
 
-        loadDashboardStats();
-        loadDoctorsDropdown();
-        setMinDates();
-        loadProfile();
+    function loadDashboardStats() {
+      const stats = getPatientStats(currentUser.id);
+      document.getElementById('totalAppointments').textContent = stats.totalAppointments;
+      document.getElementById('upcomingAppointments').textContent = stats.upcomingAppointments;
+      document.getElementById('totalInvoices').textContent = stats.totalInvoices;
+      document.getElementById('unpaidInvoices').textContent = stats.unpaidInvoices;
+    }
+
+    function loadDoctorsDropdown() {
+      const data = getData();
+      const select = document.getElementById('doctorId');
+      select.innerHTML = '<option value="">Choose a doctor</option>';
+      data.doctors.forEach(doc => {
+        select.innerHTML += `<option value="${doc.id}">${doc.name} - ${doc.department}</option>`;
       });
+    }
 
-      function showSection(section) {
-        document
-          .querySelectorAll(".content-section")
-          .forEach((s) => (s.style.display = "none"));
-        document
-          .querySelectorAll(".nav-item")
-          .forEach((n) => n.classList.remove("active", "bg-blue-700"));
+    function setMinDates() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('aptDate').setAttribute('min', today);
+      document.getElementById('seatDate').setAttribute('min', today);
+    }
 
-        document.getElementById(section + "-section").style.display = "block";
-        event.target
-          .closest(".nav-item")
-          .classList.add("active", "bg-blue-700");
-
-        if (section === "appointments") loadAppointmentsList();
-        if (section === "invoices") loadInvoicesList();
-        if (section === "seat-booking") loadSeatBookingsList();
+    function handleBookAppointment(event) {
+      event.preventDefault();
+      const data = {
+        doctorId: document.getElementById('doctorId').value,
+        date: document.getElementById('aptDate').value,
+        time: document.getElementById('aptTime').value,
+        reason: document.getElementById('aptReason').value
+      };
+      if (bookAppointment(data)) {
+        document.getElementById('appointmentForm').reset();
+        loadDashboardStats();
+        showSection('appointments');
       }
+    }
 
-      function loadDashboardStats() {
-        const stats = getPatientStats(currentUser.id);
-        document.getElementById("totalAppointments").textContent =
-          stats.totalAppointments;
-        document.getElementById("upcomingAppointments").textContent =
-          stats.upcomingAppointments;
-        document.getElementById("totalInvoices").textContent =
-          stats.totalInvoices;
-        document.getElementById("unpaidInvoices").textContent =
-          stats.unpaidInvoices;
+    function loadAppointmentsList() {
+      const appointments = getPatientAppointments(currentUser.id);
+      const list = document.getElementById('appointmentsList');
+      
+      if (appointments.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No appointments found.</p>';
+        return;
       }
-
-      function loadDoctorsDropdown() {
-        const data = getData();
-        const select = document.getElementById("doctorId");
-        select.innerHTML = '<option value="">Choose a doctor</option>';
-        data.doctors.forEach((doc) => {
-          select.innerHTML += `<option value="${doc.id}">${doc.name} - ${doc.department}</option>`;
-        });
-      }
-
-      function setMinDates() {
-        const today = new Date().toISOString().split("T")[0];
-        document.getElementById("aptDate").setAttribute("min", today);
-        document.getElementById("seatDate").setAttribute("min", today);
-      }
-
-      function handleBookAppointment(event) {
-        event.preventDefault();
-        const data = {
-          doctorId: document.getElementById("doctorId").value,
-          date: document.getElementById("aptDate").value,
-          time: document.getElementById("aptTime").value,
-          reason: document.getElementById("aptReason").value,
-        };
-        if (bookAppointment(data)) {
-          document.getElementById("appointmentForm").reset();
-          loadDashboardStats();
-          showSection("appointments");
-        }
-      }
-
-      function loadAppointmentsList() {
-        const appointments = getPatientAppointments(currentUser.id);
-        const list = document.getElementById("appointmentsList");
-
-        if (appointments.length === 0) {
-          list.innerHTML =
-            '<p class="text-gray-600">No appointments found.</p>';
-          return;
-        }
-
-        const details = getAllAppointmentsWithDetails(appointments);
-        list.innerHTML = details
-          .map((apt) => {
-            const statusColor =
-              apt.status === "Completed"
-                ? "bg-green-100 text-green-800"
-                : apt.status === "Cancelled"
-                ? "bg-red-100 text-red-800"
-                : "bg-yellow-100 text-yellow-800";
-            return `
+      
+      const details = getAllAppointmentsWithDetails(appointments);
+      list.innerHTML = details.map(apt => {
+        const statusColor = apt.status === 'Completed' ? 'bg-green-100 text-green-800' : 
+                           apt.status === 'Cancelled' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800';
+        return `
           <div class="bg-white rounded-lg shadow p-4">
             <div class="flex justify-between items-start mb-2">
               <div>
                 <h3 class="font-bold text-lg">${apt.doctorName}</h3>
-                <p class="text-gray-600">${formatDate(apt.date)} at ${
-              apt.time
-            }</p>
+                <p class="text-gray-600">${formatDate(apt.date)} at ${apt.time}</p>
               </div>
-              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">${
-              apt.status
-            }</span>
+              <span class="px-3 py-1 rounded-full text-sm font-semibold ${statusColor}">${apt.status}</span>
             </div>
-            <p class="text-gray-600"><strong>Department:</strong> ${
-              apt.doctorDepartment
-            }</p>
-            ${
-              apt.reason
-                ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>`
-                : ""
-            }
-            ${
-              apt.status === "Pending"
-                ? `<button onclick="cancelApt('${apt.id}')" class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Cancel</button>`
-                : ""
-            }
+            <p class="text-gray-600"><strong>Department:</strong> ${apt.doctorDepartment}</p>
+            ${apt.reason ? `<p class="text-gray-600"><strong>Reason:</strong> ${apt.reason}</p>` : ''}
+            ${apt.status === 'Pending' ? `<button onclick="cancelApt('${apt.id}')" class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Cancel</button>` : ''}
           </div>
         `;
-          })
-          .join("");
-      }
+      }).join('');
+    }
 
-      function cancelApt(id) {
-        if (confirm("Cancel this appointment?")) {
-          if (cancelAppointment(id)) {
-            loadAppointmentsList();
-            loadDashboardStats();
-          }
+    function cancelApt(id) {
+      if (confirm('Cancel this appointment?')) {
+        if (cancelAppointment(id)) {
+          loadAppointmentsList();
+          loadDashboardStats();
         }
       }
+    }
 
-      function loadInvoicesList() {
-        const invoices = getPatientInvoices(currentUser.id);
-        const list = document.getElementById("invoicesList");
-
-        if (invoices.length === 0) {
-          list.innerHTML = '<p class="text-gray-600">No invoices found.</p>';
-          return;
-        }
-
-        list.innerHTML = invoices
-          .map(
-            (inv) => `
+    function loadInvoicesList() {
+      const invoices = getPatientInvoices(currentUser.id);
+      const list = document.getElementById('invoicesList');
+      
+      if (invoices.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No invoices found.</p>';
+        return;
+      }
+      
+      list.innerHTML = invoices.map(inv => `
         <div class="bg-white rounded-lg shadow p-4">
           <div class="flex justify-between items-start mb-2">
             <div>
               <h3 class="font-bold text-lg">Invoice ${inv.id}</h3>
               <p class="text-gray-600">${formatDate(inv.date)}</p>
             </div>
-            <span class="px-3 py-1 rounded-full text-sm font-semibold ${
-              inv.paid
-                ? "bg-green-100 text-green-800"
-                : "bg-yellow-100 text-yellow-800"
-            }">${inv.paid ? "Paid" : "Unpaid"}</span>
+            <span class="px-3 py-1 rounded-full text-sm font-semibold ${inv.paid ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">${inv.paid ? 'Paid' : 'Unpaid'}</span>
           </div>
-          <p class="text-gray-600"><strong>Doctor:</strong> ${
-            inv.doctorName
-          }</p>
-          <p class="text-gray-600"><strong>Services:</strong> ${
-            inv.services
-          }</p>
-          <p class="text-gray-600"><strong>Amount:</strong> <span class="text-blue-600 font-bold">৳${inv.amount.toFixed(
-            2
-          )}</span></p>
+          <p class="text-gray-600"><strong>Doctor:</strong> ${inv.doctorName}</p>
+          <p class="text-gray-600"><strong>Services:</strong> ${inv.services}</p>
+          <p class="text-gray-600"><strong>Amount:</strong> <span class="text-blue-600 font-bold">৳${inv.amount.toFixed(2)}</span></p>
           <div class="flex space-x-2 mt-2">
-            <button onclick="printInvoice('${
-              inv.id
-            }')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Print</button>
-            ${
-              !inv.paid
-                ? `<button onclick="markPaid('${inv.id}')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Mark Paid</button>`
-                : ""
-            }
+            <button onclick="printInvoice('${inv.id}')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Print</button>
+            ${!inv.paid ? `<button onclick="markPaid('${inv.id}')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Mark Paid</button>` : ''}
           </div>
         </div>
-      `
-          )
-          .join("");
+      `).join('');
+    }
+
+    function markPaid(id) {
+      if (markInvoicePaid(id)) {
+        loadInvoicesList();
+        loadDashboardStats();
       }
+    }
 
-      function markPaid(id) {
-        if (markInvoicePaid(id)) {
-          loadInvoicesList();
-          loadDashboardStats();
-        }
+    function handleSeatBooking(event) {
+      event.preventDefault();
+      const data = {
+        patientName: document.getElementById('seatPatientName').value,
+        phone: document.getElementById('seatPhone').value,
+        date: document.getElementById('seatDate').value,
+        seatType: document.getElementById('seatType').value
+      };
+      if (bookSeat(data)) {
+        document.getElementById('seatForm').reset();
+        loadSeatBookingsList();
       }
+    }
 
-      function handleSeatBooking(event) {
-        event.preventDefault();
-        const data = {
-          patientName: document.getElementById("seatPatientName").value,
-          phone: document.getElementById("seatPhone").value,
-          date: document.getElementById("seatDate").value,
-          seatType: document.getElementById("seatType").value,
-        };
-        if (bookSeat(data)) {
-          document.getElementById("seatForm").reset();
-          loadSeatBookingsList();
-        }
+    function loadSeatBookingsList() {
+      const bookings = getPatientSeatBookings(currentUser.id);
+      const list = document.getElementById('seatBookingsList');
+      
+      document.getElementById('seatPatientName').value = currentUser.name;
+      document.getElementById('seatPhone').value = currentUser.phone;
+      
+      if (bookings.length === 0) {
+        list.innerHTML = '<p class="text-gray-600">No seat bookings found.</p>';
+        return;
       }
-
-      function loadSeatBookingsList() {
-        const bookings = getPatientSeatBookings(currentUser.id);
-        const list = document.getElementById("seatBookingsList");
-
-        document.getElementById("seatPatientName").value = currentUser.name;
-        document.getElementById("seatPhone").value = currentUser.phone;
-
-        if (bookings.length === 0) {
-          list.innerHTML =
-            '<p class="text-gray-600">No seat bookings found.</p>';
-          return;
-        }
-
-        list.innerHTML = bookings
-          .map(
-            (b) => `
+      
+      list.innerHTML = bookings.map(b => `
         <div class="bg-white rounded-lg shadow p-4">
           <h3 class="font-bold text-lg">Booking ${b.id}</h3>
-          <p class="text-gray-600"><strong>Date:</strong> ${formatDate(
-            b.date
-          )}</p>
+          <p class="text-gray-600"><strong>Date:</strong> ${formatDate(b.date)}</p>
           <p class="text-gray-600"><strong>Seat Type:</strong> ${b.seatType}</p>
-          <p class="text-gray-600"><strong>Status:</strong> <span class="text-green-600 font-semibold">${
-            b.status
-          }</span></p>
+          <p class="text-gray-600"><strong>Status:</strong> <span class="text-green-600 font-semibold">${b.status}</span></p>
         </div>
-      `
-          )
-          .join("");
-      }
+      `).join('');
+    }
 
-      function handleSuggestion(event) {
-        event.preventDefault();
-        const data = {
-          name: currentUser.name,
-          email: currentUser.email,
-          subject: document.getElementById("sugSubject").value,
-          message: document.getElementById("sugMessage").value,
-        };
-        if (submitSuggestion(data)) {
-          document.getElementById("suggestionForm").reset();
-        }
+    function handleSuggestion(event) {
+      event.preventDefault();
+      const data = {
+        name: currentUser.name,
+        email: currentUser.email,
+        subject: document.getElementById('sugSubject').value,
+        message: document.getElementById('sugMessage').value
+      };
+      if (submitSuggestion(data)) {
+        document.getElementById('suggestionForm').reset();
       }
+    }
 
-      function loadProfile() {
-        document.getElementById("profileName").value = currentUser.name;
-        document.getElementById("profileEmail").value = currentUser.email;
-        document.getElementById("profilePhone").value = currentUser.phone;
-        document.getElementById("profileDob").value =
-          currentUser.dateOfBirth || "";
-        document.getElementById("profileGender").value =
-          currentUser.gender || "";
-        document.getElementById("profileAddress").value =
-          currentUser.address || "";
-      }
+    function loadProfile() {
+      document.getElementById('profileName').value = currentUser.name;
+      document.getElementById('profileEmail').value = currentUser.email;
+      document.getElementById('profilePhone').value = currentUser.phone;
+      document.getElementById('profileDob').value = currentUser.dateOfBirth || '';
+      document.getElementById('profileGender').value = currentUser.gender || '';
+      document.getElementById('profileAddress').value = currentUser.address || '';
+    }
 
-      function handleProfileUpdate(event) {
-        event.preventDefault();
-        const data = {
-          name: document.getElementById("profileName").value,
-          email: document.getElementById("profileEmail").value,
-          phone: document.getElementById("profilePhone").value,
-          dateOfBirth: document.getElementById("profileDob").value,
-          gender: document.getElementById("profileGender").value,
-          address: document.getElementById("profileAddress").value,
-        };
-        if (updateProfile(currentUser.id, data)) {
-          currentUser = getCurrentUser();
-          document.getElementById("userName").textContent = currentUser.name;
-        }
+    function handleProfileUpdate(event) {
+      event.preventDefault();
+      const data = {
+        name: document.getElementById('profileName').value,
+        email: document.getElementById('profileEmail').value,
+        phone: document.getElementById('profilePhone').value,
+        dateOfBirth: document.getElementById('profileDob').value,
+        gender: document.getElementById('profileGender').value,
+        address: document.getElementById('profileAddress').value
+      };
+      if (updateProfile(currentUser.id, data)) {
+        currentUser = getCurrentUser();
+        document.getElementById('userName').textContent = currentUser.name;
       }
+    }
 
-      function handleLogout() {
-        if (confirm("Are you sure you want to logout?")) {
-          logout();
-        }
+    function handleLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        logout();
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
+

@@ -3,6 +3,10 @@ function initializeData() {
   // Check if data already exists
   if (!localStorage.getItem('hospitalData')) {
     const initialData = {
+      admin: {
+        email: "admin@istmedical.com",
+        password: "admin"
+      },
       doctors: [
         { 
           id: 1, 
@@ -13,7 +17,8 @@ function initializeData() {
           qualification: "MBBS, MD (Cardiology)",
           experience: "15 years",
           available: true,
-          schedule: "Mon-Fri, 9AM-5PM"
+          schedule: "Mon-Fri, 9AM-5PM",
+          image: "assets/doctor_1.png"
         },
         { 
           id: 2, 
@@ -24,7 +29,8 @@ function initializeData() {
           qualification: "MBBS, DM (Neurology)",
           experience: "12 years",
           available: true,
-          schedule: "Mon-Sat, 10AM-4PM"
+          schedule: "Mon-Sat, 10AM-4PM",
+          image: "assets/doctor_2.png"
         },
         { 
           id: 3, 
@@ -35,7 +41,8 @@ function initializeData() {
           qualification: "MBBS, MS (Orthopedics)",
           experience: "10 years",
           available: true,
-          schedule: "Tue-Sat, 9AM-3PM"
+          schedule: "Tue-Sat, 9AM-3PM",
+          image: "assets/doctor_3.png"
         },
         { 
           id: 4, 
@@ -46,7 +53,8 @@ function initializeData() {
           qualification: "MBBS, DCH",
           experience: "8 years",
           available: true,
-          schedule: "Mon-Fri, 8AM-2PM"
+          schedule: "Mon-Fri, 8AM-2PM",
+          image: "assets/doctor_4.png"
         },
         { 
           id: 5, 
@@ -57,7 +65,8 @@ function initializeData() {
           qualification: "MBBS, MS (Surgery)",
           experience: "18 years",
           available: true,
-          schedule: "Mon-Sat, 10AM-6PM"
+          schedule: "Mon-Sat, 10AM-6PM",
+          image: "assets/doctor_5.png"
         },
         { 
           id: 6, 
@@ -68,7 +77,8 @@ function initializeData() {
           qualification: "MBBS, MS (Obs & Gynae)",
           experience: "14 years",
           available: true,
-          schedule: "Mon-Fri, 9AM-4PM"
+          schedule: "Mon-Fri, 9AM-4PM",
+          image: "assets/doctor_6.png"
         }
       ],
       patients: [],

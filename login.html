@@ -1,320 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - IST Medical College & Hospital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/btn-animations.css" />
-  </head>
-  <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-      <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-          <div class="flex items-center space-x-3">
-            <i class="fas fa-hospital text-blue-600 text-3xl"></i>
-            <span class="text-xl font-bold text-blue-800"
-              >IST Medical College & Hospital</span
-            >
-          </div>
-          <div class="hidden md:flex items-center space-x-6">
-            <a href="index.html" class="text-gray-700 hover:text-blue-600"
-              >Home</a
-            >
-            <a href="about.html" class="text-gray-700 hover:text-blue-600"
-              >About</a
-            >
-            <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600"
-              >Doctors</a
-            >
-            <a
-              href="login.html"
-              class="text-blue-600 font-semibold hover:text-blue-800"
-              >Login</a
-            >
-            <a
-              href="signup.html"
-              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              >Sign Up</a
-            >
-          </div>
-          <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars text-2xl"></i>
-          </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - IST Medical College & Hospital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-hospital text-blue-600 text-3xl"></i>
+          <span class="text-xl font-bold text-blue-800">IST Medical College & Hospital</span>
         </div>
-        <div id="mobileMenu" class="hidden md:hidden pb-4">
-          <a href="index.html" class="block py-2 text-blue-600 font-semibold"
-            >Home</a
-          >
-          <a
-            href="about.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >About</a
-          >
-          <a
-            href="doctor-list.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Doctors</a
-          >
-          <a
-            href="appointment.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Appointment</a
-          >
-          <a
-            href="payslip.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Pay Slip</a
-          >
-          <a
-            href="history.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >History</a
-          >
-          <a
-            href="seat-booking.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Seat Booking</a
-          >
-          <a
-            href="suggestions.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Suggestions</a
-          >
-          <a
-            href="login.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Login</a
-          >
-          <a
-            href="signup.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Sign Up</a
-          >
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600">Doctors</a>
+          <a href="login.html" class="text-blue-600 font-semibold hover:text-blue-800">Login</a>
+          <a href="signup.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Sign Up</a>
         </div>
+        <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Login Section -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-md mx-auto">
-          <div class="bg-white rounded-lg shadow-lg p-8">
-            <div class="text-center mb-8">
-              <i class="fas fa-user-circle text-blue-600 text-6xl mb-4"></i>
-              <h2 class="text-3xl font-bold text-blue-800">Login</h2>
-              <p class="text-gray-600 mt-2">Access your account</p>
+  <!-- Login Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-md mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="text-center mb-8">
+            <i class="fas fa-user-circle text-blue-600 text-6xl mb-4"></i>
+            <h2 class="text-3xl font-bold text-blue-800">Login</h2>
+            <p class="text-gray-600 mt-2">Access your account</p>
+          </div>
+
+          <!-- User Type Tabs -->
+          <div class="flex mb-6 border-b">
+            <button id="patientTab" class="flex-1 py-3 text-center font-semibold text-blue-600 border-b-2 border-blue-600" onclick="switchTab('patient')">
+              Patient
+            </button>
+            <button id="doctorTab" class="flex-1 py-3 text-center font-semibold text-gray-600" onclick="switchTab('doctor')">
+              Doctor
+            </button>
+            <button id="adminTab" class="flex-1 py-3 text-center font-semibold text-gray-600" onclick="switchTab('admin')">
+              Admin
+            </button>
+          </div>
+
+          <!-- Login Form -->
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="mb-4">
+              <label class="block text-gray-700 font-semibold mb-2">Email</label>
+              <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
             </div>
-
-            <!-- User Type Tabs -->
-            <div class="flex mb-6 border-b">
-              <button
-                id="patientTab"
-                class="flex-1 py-3 text-center font-semibold text-blue-600 border-b-2 border-blue-600"
-                onclick="switchTab('patient')"
-              >
-                Patient
-              </button>
-              <button
-                id="doctorTab"
-                class="flex-1 py-3 text-center font-semibold text-gray-600"
-                onclick="switchTab('doctor')"
-              >
-                Doctor
-              </button>
+            <div class="mb-6">
+              <label class="block text-gray-700 font-semibold mb-2">Password</label>
+              <input type="password" id="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
             </div>
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              Login
+            </button>
+          </form>
 
-            <!-- Login Form -->
-            <form id="loginForm" onsubmit="handleLogin(event)">
-              <div class="mb-4">
-                <label class="block text-gray-700 font-semibold mb-2"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                />
-              </div>
-              <div class="mb-6">
-                <label class="block text-gray-700 font-semibold mb-2"
-                  >Password</label
-                >
-                <input
-                  type="password"
-                  id="password"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                />
-              </div>
-              <button
-                type="submit"
-                class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-              >
-                Login
-              </button>
-            </form>
+          <div class="mt-6 text-center">
+            <p class="text-gray-600">Don't have an account? <a href="signup.html" class="text-blue-600 font-semibold hover:underline">Sign Up</a></p>
+          </div>
 
-            <div class="mt-6 text-center">
-              <p class="text-gray-600">
-                Don't have an account?
-                <a
-                  href="signup.html"
-                  class="text-blue-600 font-semibold hover:underline"
-                  >Sign Up</a
-                >
-              </p>
-            </div>
-
-            <!-- Doctor Credentials Info -->
-            <div
-              id="doctorInfo"
-              class="mt-6 p-4 bg-blue-50 rounded-lg"
-              style="display: none"
-            >
-              <p class="text-sm text-gray-700 font-semibold mb-2">
-                Demo Doctor Credentials:
-              </p>
-              <p class="text-sm text-gray-600">Email: rahman@istmedical.com</p>
-              <p class="text-sm text-gray-600">Password: doc123</p>
-            </div>
+          <!-- Credentials Info -->
+          <div id="credentialsInfo" class="mt-6 p-4 bg-blue-50 rounded-lg" style="display: none;">
+            <p id="credentialTitle" class="text-sm text-gray-700 font-semibold mb-2"></p>
+            <p id="credentialEmail" class="text-sm text-gray-600"></p>
+            <p id="credentialPassword" class="text-sm text-gray-600"></p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
-          <div>
-            <h3 class="text-xl font-bold mb-4">
-              IST Medical College & Hospital
-            </h3>
-            <p class="text-blue-200">
-              Providing quality healthcare services with compassion and
-              excellence.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li>
-                <a href="about.html" class="text-blue-200 hover:text-white"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a
-                  href="doctor-list.html"
-                  class="text-blue-200 hover:text-white"
-                  >Our Doctors</a
-                >
-              </li>
-              <li>
-                <a
-                  href="appointment.html"
-                  class="text-blue-200 hover:text-white"
-                  >Book Appointment</a
-                >
-              </li>
-              <li>
-                <a
-                  href="suggestions.html"
-                  class="text-blue-200 hover:text-white"
-                  >Contact Us</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
-            <ul class="space-y-2 text-blue-200">
-              <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
-              <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
-              <li>
-                <i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh
-              </li>
-            </ul>
-          </div>
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">IST Medical College & Hospital</h3>
+          <p class="text-blue-200">Providing quality healthcare services with compassion and excellence.</p>
         </div>
-        <div
-          class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200"
-        >
-          <p>
-            &copy; 2025 IST Medical College & Hospital. All rights reserved.
-          </p>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="text-blue-200 hover:text-white">About Us</a></li>
+            <li><a href="doctor-list.html" class="text-blue-200 hover:text-white">Our Doctors</a></li>
+            <li><a href="appointment.html" class="text-blue-200 hover:text-white">Book Appointment</a></li>
+            <li><a href="suggestions.html" class="text-blue-200 hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+          <ul class="space-y-2 text-blue-200">
+            <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
+            <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh</li>
+          </ul>
         </div>
       </div>
-    </footer>
+      <div class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200">
+        <p>&copy; 2025 IST Medical College & Hospital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <script src="js/data.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/btn-animations.js"></script>
-    <script>
-      let currentUserType = "patient";
-
-      document.addEventListener("DOMContentLoaded", function () {
-        // Redirect if already logged in
-        if (isLoggedIn()) {
-          const userType = getUserType();
-          window.location.href =
-            userType === "doctor"
-              ? "doctor-dashboard.html"
-              : "patient-dashboard.html";
-        }
-      });
-
-      function switchTab(type) {
-        currentUserType = type;
-        const patientTab = document.getElementById("patientTab");
-        const doctorTab = document.getElementById("doctorTab");
-        const doctorInfo = document.getElementById("doctorInfo");
-
-        if (type === "patient") {
-          patientTab.classList.add(
-            "text-blue-600",
-            "border-b-2",
-            "border-blue-600"
-          );
-          patientTab.classList.remove("text-gray-600");
-          doctorTab.classList.add("text-gray-600");
-          doctorTab.classList.remove(
-            "text-blue-600",
-            "border-b-2",
-            "border-blue-600"
-          );
-          doctorInfo.style.display = "none";
-        } else {
-          doctorTab.classList.add(
-            "text-blue-600",
-            "border-b-2",
-            "border-blue-600"
-          );
-          doctorTab.classList.remove("text-gray-600");
-          patientTab.classList.add("text-gray-600");
-          patientTab.classList.remove(
-            "text-blue-600",
-            "border-b-2",
-            "border-blue-600"
-          );
-          doctorInfo.style.display = "block";
-        }
-      }
-
-      function handleLogin(event) {
-        event.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        login(email, password, currentUserType);
-      }
-    </script>
-  </body>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+	    let currentUserType = 'patient';
+	
+	    document.addEventListener('DOMContentLoaded', function() {
+	      // Redirect if already logged in
+	      if (isLoggedIn()) {
+	        const userType = getUserType();
+	        window.location.href = userType === 'admin' ? 'admin-dashboard.html' : 
+	                                 userType === 'doctor' ? 'doctor-dashboard.html' : 'patient-dashboard.html';
+	      }
+	    });
+	
+	    function switchTab(type) {
+	      currentUserType = type;
+	      const tabs = ['patient', 'doctor', 'admin'];
+	      const tabElements = tabs.map(t => document.getElementById(t + 'Tab'));
+	      const infoBox = document.getElementById('credentialsInfo');
+	      const data = getData();
+	
+	      tabElements.forEach(tab => {
+	        tab.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+	        tab.classList.add('text-gray-600');
+	      });
+	
+	      document.getElementById(type + 'Tab').classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+	      document.getElementById(type + 'Tab').classList.remove('text-gray-600');
+	
+	      if (type === 'doctor') {
+	        infoBox.style.display = 'block';
+	        document.getElementById('credentialTitle').textContent = 'Demo Doctor Credentials:';
+	        document.getElementById('credentialEmail').textContent = 'Email: ' + data.doctors[0].email;
+	        document.getElementById('credentialPassword').textContent = 'Password: ' + data.doctors[0].password;
+	      } else if (type === 'admin') {
+	        infoBox.style.display = 'block';
+	        document.getElementById('credentialTitle').textContent = 'Admin Credentials:';
+	        document.getElementById('credentialEmail').textContent = 'Email: ' + data.admin.email;
+	        document.getElementById('credentialPassword').textContent = 'Password: ' + data.admin.password;
+	      } else {
+	        infoBox.style.display = 'none';
+	      }
+	    }
+	
+	    function handleLogin(event) {
+	      event.preventDefault();
+	      const email = document.getElementById('email').value;
+	      const password = document.getElementById('password').value;
+	      login(email, password, currentUserType);
+	    }
+  </script>
+</body>
 </html>
+

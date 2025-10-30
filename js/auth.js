@@ -62,7 +62,11 @@ function login(email, password, userType = 'patient') {
   
   let user = null;
   
-  if (userType === 'doctor') {
+  if (userType === 'admin') {
+    if (data.admin.email === email && data.admin.password === password) {
+      user = { id: 0, name: "Admin" }; // Dummy user object for session
+    }
+  } else if (userType === 'doctor') {
     user = data.doctors.find(d => d.email === email && d.password === password);
   } else {
     user = data.patients.find(p => p.email === email && p.password === password);
@@ -85,7 +89,13 @@ function login(email, password, userType = 'patient') {
   
   // Redirect to dashboard
   setTimeout(() => {
-    window.location.href = userType === 'doctor' ? 'doctor-dashboard.html' : 'patient-dashboard.html';
+    if (userType === 'admin') {
+      window.location.href = 'admin-dashboard.html';
+    } else if (userType === 'doctor') {
+      window.location.href = 'doctor-dashboard.html';
+    } else {
+      window.location.href = 'patient-dashboard.html';
+    }
   }, 1000);
   
   return true;

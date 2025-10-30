@@ -53,7 +53,9 @@ function getCurrentUser() {
   const data = getData();
   if (!data || !data.session) return null;
   
-  if (data.session.userType === 'doctor') {
+  if (data.session.userType === 'admin') {
+    return { id: 0, name: "Admin" };
+  } else if (data.session.userType === 'doctor') {
     return data.doctors.find(d => d.id === data.session.userId);
   } else if (data.session.userType === 'patient') {
     return data.patients.find(p => p.id === data.session.userId);
@@ -96,7 +98,13 @@ function updateNavigation() {
       dashboardBtn.style.display = 'block';
       const userType = getUserType();
       dashboardBtn.onclick = () => {
-        window.location.href = userType === 'doctor' ? 'doctor-dashboard.html' : 'patient-dashboard.html';
+        if (userType === 'admin') {
+          window.location.href = 'admin-dashboard.html';
+        } else if (userType === 'doctor') {
+          window.location.href = 'doctor-dashboard.html';
+        } else {
+          window.location.href = 'patient-dashboard.html';
+        }
       };
     }
   } else {

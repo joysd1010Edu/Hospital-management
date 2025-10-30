@@ -1,375 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Appointment - IST Medical College & Hospital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/btn-animations.css" />
-  </head>
-  <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-      <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-          <div class="flex items-center space-x-3">
-            <i class="fas fa-hospital text-blue-600 text-3xl"></i>
-            <span class="text-xl font-bold text-blue-800"
-              >IST Medical College & Hospital</span
-            >
-          </div>
-          <div class="hidden md:flex items-center space-x-6">
-            <a href="index.html" class="text-gray-700 hover:text-blue-600"
-              >Home</a
-            >
-            <a href="about.html" class="text-gray-700 hover:text-blue-600"
-              >About</a
-            >
-            <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600"
-              >Doctors</a
-            >
-            <a
-              href="appointment.html"
-              class="text-blue-600 font-semibold hover:text-blue-800"
-              >Appointment</a
-            >
-            <a href="payslip.html" class="text-gray-700 hover:text-blue-600"
-              >Pay Slip</a
-            >
-            <a href="history.html" class="text-gray-700 hover:text-blue-600"
-              >History</a
-            >
-            <a
-              href="seat-booking.html"
-              class="text-gray-700 hover:text-blue-600"
-              >Seat Booking</a
-            >
-            <a href="suggestions.html" class="text-gray-700 hover:text-blue-600"
-              >Suggestions</a
-            >
-            <a
-              href="login.html"
-              id="loginBtn"
-              class="text-gray-700 hover:text-blue-600"
-              >Login</a
-            >
-            <a
-              href="signup.html"
-              id="signupBtn"
-              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              >Sign Up</a
-            >
-            <button
-              id="dashboardBtn"
-              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              style="display: none"
-            >
-              Dashboard
-            </button>
-          </div>
-          <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars text-2xl"></i>
-          </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment - IST Medical College & Hospital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-hospital text-blue-600 text-3xl"></i>
+          <span class="text-xl font-bold text-blue-800">IST Medical College & Hospital</span>
         </div>
-        <div id="mobileMenu" class="hidden md:hidden pb-4">
-          <a href="index.html" class="block py-2 text-blue-600 font-semibold"
-            >Home</a
-          >
-          <a
-            href="about.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >About</a
-          >
-          <a
-            href="doctor-list.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Doctors</a
-          >
-          <a
-            href="appointment.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Appointment</a
-          >
-          <a
-            href="payslip.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Pay Slip</a
-          >
-          <a
-            href="history.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >History</a
-          >
-          <a
-            href="seat-booking.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Seat Booking</a
-          >
-          <a
-            href="suggestions.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Suggestions</a
-          >
-          <a
-            href="login.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Login</a
-          >
-          <a
-            href="signup.html"
-            class="block py-2 text-gray-700 hover:text-blue-600"
-            >Sign Up</a
-          >
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="doctor-list.html" class="text-gray-700 hover:text-blue-600">Doctors</a>
+          <a href="appointment.html" class="text-blue-600 font-semibold hover:text-blue-800">Appointment</a>
+          <a href="payslip.html" class="text-gray-700 hover:text-blue-600">Pay Slip</a>
+          <a href="history.html" class="text-gray-700 hover:text-blue-600">History</a>
+          <a href="seat-booking.html" class="text-gray-700 hover:text-blue-600">Seat Booking</a>
+          <a href="suggestions.html" class="text-gray-700 hover:text-blue-600">Suggestions</a>
+          <a href="login.html" id="loginBtn" class="text-gray-700 hover:text-blue-600">Login</a>
+          <a href="signup.html" id="signupBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Sign Up</a>
+          <button id="dashboardBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" style="display:none;">Dashboard</button>
         </div>
+        <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Page Header -->
-    <section class="bg-blue-600 text-white py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl font-bold mb-4">Book an Appointment</h1>
-        <p class="text-xl">Schedule your visit with our expert doctors</p>
-      </div>
-    </section>
+  <!-- Page Header -->
+  <section class="bg-blue-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold mb-4">Book an Appointment</h1>
+      <p class="text-xl">Schedule your visit with our expert doctors</p>
+    </div>
+  </section>
 
-    <!-- Appointment Form -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-2xl mx-auto">
-          <div class="bg-white rounded-lg shadow-lg p-8">
-            <form id="appointmentForm" onsubmit="handleAppointment(event)">
-              <div class="mb-6">
-                <label class="block text-gray-700 font-semibold mb-2"
-                  >Select Doctor *</label
-                >
-                <select
-                  id="doctorId"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                >
-                  <option value="">Choose a doctor</option>
+  <!-- Appointment Form -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <form id="appointmentForm" onsubmit="handleAppointment(event)">
+            <div class="mb-6">
+              <label class="block text-gray-700 font-semibold mb-2">Select Doctor *</label>
+              <select id="doctorId" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                <option value="">Choose a doctor</option>
+              </select>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+              <div>
+                <label class="block text-gray-700 font-semibold mb-2">Appointment Date *</label>
+                <input type="date" id="date" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+              </div>
+              <div>
+                <label class="block text-gray-700 font-semibold mb-2">Preferred Time *</label>
+                <select id="time" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+                  <option value="">Select time</option>
+                  <option value="09:00 AM">09:00 AM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="03:00 PM">03:00 PM</option>
+                  <option value="04:00 PM">04:00 PM</option>
+                  <option value="05:00 PM">05:00 PM</option>
                 </select>
               </div>
-
-              <div class="grid md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Appointment Date *</label
-                  >
-                  <input
-                    type="date"
-                    id="date"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  />
-                </div>
-                <div>
-                  <label class="block text-gray-700 font-semibold mb-2"
-                    >Preferred Time *</label
-                  >
-                  <select
-                    id="time"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  >
-                    <option value="">Select time</option>
-                    <option value="09:00 AM">09:00 AM</option>
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="11:00 AM">11:00 AM</option>
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="02:00 PM">02:00 PM</option>
-                    <option value="03:00 PM">03:00 PM</option>
-                    <option value="04:00 PM">04:00 PM</option>
-                    <option value="05:00 PM">05:00 PM</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="mb-6">
-                <label class="block text-gray-700 font-semibold mb-2"
-                  >Reason for Visit</label
-                >
-                <textarea
-                  id="reason"
-                  rows="4"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-                  placeholder="Describe your symptoms or reason for consultation"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-              >
-                Book Appointment
-              </button>
-            </form>
-
-            <div
-              id="loginPrompt"
-              class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg"
-              style="display: none"
-            >
-              <p class="text-yellow-800">
-                <i class="fas fa-info-circle mr-2"></i>
-                Please
-                <a href="login.html" class="font-semibold underline">login</a>
-                or
-                <a href="signup.html" class="font-semibold underline"
-                  >sign up</a
-                >
-                to book an appointment.
-              </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
-          <div>
-            <h3 class="text-xl font-bold mb-4">
-              IST Medical College & Hospital
-            </h3>
-            <p class="text-blue-200">
-              Providing quality healthcare services with compassion and
-              excellence.
+            <div class="mb-6">
+              <label class="block text-gray-700 font-semibold mb-2">Reason for Visit</label>
+              <textarea id="reason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600" placeholder="Describe your symptoms or reason for consultation"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              Book Appointment
+            </button>
+          </form>
+
+          <div id="loginPrompt" class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg" style="display: none;">
+            <p class="text-yellow-800">
+              <i class="fas fa-info-circle mr-2"></i>
+              Please <a href="login.html" class="font-semibold underline">login</a> or <a href="signup.html" class="font-semibold underline">sign up</a> to book an appointment.
             </p>
           </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li>
-                <a href="about.html" class="text-blue-200 hover:text-white"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a
-                  href="doctor-list.html"
-                  class="text-blue-200 hover:text-white"
-                  >Our Doctors</a
-                >
-              </li>
-              <li>
-                <a
-                  href="appointment.html"
-                  class="text-blue-200 hover:text-white"
-                  >Book Appointment</a
-                >
-              </li>
-              <li>
-                <a
-                  href="suggestions.html"
-                  class="text-blue-200 hover:text-white"
-                  >Contact Us</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
-            <ul class="space-y-2 text-blue-200">
-              <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
-              <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
-              <li>
-                <i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200"
-        >
-          <p>
-            &copy; 2025 IST Medical College & Hospital. All rights reserved.
-          </p>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="js/data.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/appointments.js"></script>
-    <script src="js/btn-animations.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        updateNavigation();
-        loadDoctors();
-        setMinDate();
-        checkLoginStatus();
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">IST Medical College & Hospital</h3>
+          <p class="text-blue-200">Providing quality healthcare services with compassion and excellence.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="text-blue-200 hover:text-white">About Us</a></li>
+            <li><a href="doctor-list.html" class="text-blue-200 hover:text-white">Our Doctors</a></li>
+            <li><a href="appointment.html" class="text-blue-200 hover:text-white">Book Appointment</a></li>
+            <li><a href="suggestions.html" class="text-blue-200 hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+          <ul class="space-y-2 text-blue-200">
+            <li><i class="fas fa-phone mr-2"></i> +880 1234-567890</li>
+            <li><i class="fas fa-envelope mr-2"></i> info@istmedical.com</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-200">
+        <p>&copy; 2025 IST Medical College & Hospital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-        // Check if doctor is pre-selected from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const doctorId = urlParams.get("doctor");
-        if (doctorId) {
-          document.getElementById("doctorId").value = doctorId;
-        }
-      });
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/appointments.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      updateNavigation();
+      loadDoctors();
+      setMinDate();
+      checkLoginStatus();
+      
+      // Check if doctor is pre-selected from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const doctorId = urlParams.get('doctor');
+      if (doctorId) {
+        document.getElementById('doctorId').value = doctorId;
+      }
+    });
 
-      function loadDoctors() {
-        const data = getData();
-        const doctorSelect = document.getElementById("doctorId");
+    function loadDoctors() {
+      const data = getData();
+      const doctorSelect = document.getElementById('doctorId');
+      
+      if (data && data.doctors) {
+        data.doctors.forEach(doctor => {
+          const option = document.createElement('option');
+          option.value = doctor.id;
+          option.textContent = `${doctor.name} - ${doctor.department}`;
+          doctorSelect.appendChild(option);
+        });
+      }
+    }
 
-        if (data && data.doctors) {
-          data.doctors.forEach((doctor) => {
-            const option = document.createElement("option");
-            option.value = doctor.id;
-            option.textContent = `${doctor.name} - ${doctor.department}`;
-            doctorSelect.appendChild(option);
-          });
-        }
+    function setMinDate() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').setAttribute('min', today);
+    }
+
+    function checkLoginStatus() {
+      const loginPrompt = document.getElementById('loginPrompt');
+      if (!isLoggedIn()) {
+        loginPrompt.style.display = 'block';
+      }
+    }
+
+    function handleAppointment(event) {
+      event.preventDefault();
+      
+      if (!isLoggedIn()) {
+        showToast('Please login to book an appointment', 'error');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1500);
+        return;
       }
 
-      function setMinDate() {
-        const today = new Date().toISOString().split("T")[0];
-        document.getElementById("date").setAttribute("min", today);
+      if (getUserType() !== 'patient') {
+        showToast('Only patients can book appointments', 'error');
+        return;
       }
-
-      function checkLoginStatus() {
-        const loginPrompt = document.getElementById("loginPrompt");
-        if (!isLoggedIn()) {
-          loginPrompt.style.display = "block";
-        }
+      
+      const appointmentData = {
+        doctorId: document.getElementById('doctorId').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        reason: document.getElementById('reason').value
+      };
+      
+      if (bookAppointment(appointmentData)) {
+        document.getElementById('appointmentForm').reset();
+        setTimeout(() => {
+          window.location.href = 'patient-dashboard.html';
+        }, 2000);
       }
-
-      function handleAppointment(event) {
-        event.preventDefault();
-
-        if (!isLoggedIn()) {
-          showToast("Please login to book an appointment", "error");
-          setTimeout(() => {
-            window.location.href = "login.html";
-          }, 1500);
-          return;
-        }
-
-        if (getUserType() !== "patient") {
-          showToast("Only patients can book appointments", "error");
-          return;
-        }
-
-        const appointmentData = {
-          doctorId: document.getElementById("doctorId").value,
-          date: document.getElementById("date").value,
-          time: document.getElementById("time").value,
-          reason: document.getElementById("reason").value,
-        };
-
-        if (bookAppointment(appointmentData)) {
-          document.getElementById("appointmentForm").reset();
-          setTimeout(() => {
-            window.location.href = "patient-dashboard.html";
-          }, 2000);
-        }
-      }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
+

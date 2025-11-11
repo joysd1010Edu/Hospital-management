@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clear Cache - IST Medical College</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen">
-  <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
-    <h1 class="text-2xl font-bold text-blue-800 mb-4">Clear Application Cache</h1>
-    <p class="text-gray-600 mb-6">Click the button below to clear all stored data and reset the application. This will log you out and remove all appointments, but will restore the default doctor list with correct images.</p>
-    <button onclick="clearCache()" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition font-semibold">
-      Clear Cache & Reset
-    </button>
-    <p id="message" class="mt-4 text-green-600 hidden">Cache cleared! Redirecting to home...</p>
-    <a href="index.html" class="block mt-4 text-blue-600 hover:underline">Go back to home</a>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clear Cache - IST Medical College</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
+      <h1 class="text-2xl font-bold text-blue-800 mb-4">
+        Clear Application Cache
+      </h1>
+      <p class="text-gray-600 mb-6">
+        Click the button below to clear all stored data and reset the
+        application. This will log you out and remove all appointments, but will
+        restore the default doctor list with correct images.
+      </p>
+      <button
+        onclick="clearCache()"
+        class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition font-semibold"
+      >
+        Clear Cache & Reset
+      </button>
+      <p id="message" class="mt-4 text-green-600 hidden">
+        Cache cleared! Redirecting to home...
+      </p>
+      <a href="index.html" class="block mt-4 text-blue-600 hover:underline"
+        >Go back to home</a
+      >
+    </div>
 
-  <script>
-    function clearCache() {
-      localStorage.removeItem('hospitalData');
-      document.getElementById('message').classList.remove('hidden');
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1500);
-    }
-  </script>
-</body>
+    <script>
+      function clearCache() {
+        localStorage.removeItem("hospitalData");
+        document.getElementById("message").classList.remove("hidden");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      }
+    </script>
+  </body>
 </html>

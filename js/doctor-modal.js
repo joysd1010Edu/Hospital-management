@@ -24,7 +24,7 @@ function showDoctorModal(id){
   const backdrop = document.getElementById('doctorModalBackdrop');
   const container = document.getElementById('doctorModalContainer');
 
-  // populate
+  // populate - ensure we select the correct image with a more specific selector
   container.querySelector('.doc-name').textContent = doc.name;
   container.querySelector('.doc-dept').textContent = doc.department;
   container.querySelector('.doc-qual').textContent = doc.qualification || '—';
@@ -33,9 +33,17 @@ function showDoctorModal(id){
   container.querySelector('.doc-email').textContent = doc.email || '—';
   container.querySelector('.doc-availability').textContent = doc.available ? 'Available' : 'Not Available';
   container.querySelector('.doc-availability').className = 'doc-availability ' + (doc.available ? 'text-green-600' : 'text-red-600');
-  const img = container.querySelector('img');
-  img.src = doc.image || 'assets/doctor_1.png';
-  img.alt = 'Dr. ' + doc.name;
+  
+  // Fix: Use more specific selector and force image reload
+  const img = container.querySelector('.doctor-image-large');
+  if (img) {
+    img.src = doc.image || 'assets/doctor_1.png';
+    img.alt = 'Dr. ' + doc.name;
+    // Force reload to prevent caching issues on Netlify
+    img.onerror = function() {
+      this.src = 'assets/doctor_1.png';
+    };
+  }
 
   // professional details example
   const prof = container.querySelector('.doc-professional');

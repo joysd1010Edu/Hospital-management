@@ -1,6 +1,7 @@
 // data.js - Initialize default data structure
 function initializeData() {
   // Check if data already exists
+  // Note: If you're seeing wrong doctor images, clear localStorage and refresh
   if (!localStorage.getItem('hospitalData')) {
     const initialData = {
       admin: {
@@ -18,7 +19,7 @@ function initializeData() {
           experience: "15 years",
           available: true,
           schedule: "Mon-Fri, 9AM-5PM",
-          image: "./assets/doctor_1.png"
+          image: "assets/doctor_1.png"
         },
         { 
           id: 2, 
@@ -30,7 +31,7 @@ function initializeData() {
           experience: "12 years",
           available: true,
           schedule: "Mon-Sat, 10AM-4PM",
-          image: "./assets/doctor_2.png"
+          image: "assets/doctor_2.png"
         },
         { 
           id: 3, 
@@ -42,7 +43,7 @@ function initializeData() {
           experience: "10 years",
           available: true,
           schedule: "Tue-Sat, 9AM-3PM",
-          image: "./assets/doctor_3.png"
+          image: "assets/doctor_3.png"
         },
         { 
           id: 4, 
@@ -54,7 +55,7 @@ function initializeData() {
           experience: "8 years",
           available: true,
           schedule: "Mon-Fri, 8AM-2PM",
-          image: "./assets/doctor_4.png"
+          image: "assets/doctor_4.png"
         },
         { 
           id: 5, 
@@ -66,7 +67,7 @@ function initializeData() {
           experience: "18 years",
           available: true,
           schedule: "Mon-Sat, 10AM-6PM",
-          image: "./assets/doctor_5.png"
+          image: "assets/doctor_5.png"
         },
         { 
           id: 6, 
@@ -78,7 +79,7 @@ function initializeData() {
           experience: "14 years",
           available: true,
           schedule: "Mon-Fri, 9AM-4PM",
-          image: "./assets/doctor_6.png"
+          image: "assets/doctor_6.png"
         }
       ],
       patients: [],
